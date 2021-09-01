@@ -16,5 +16,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'object-curly-spacing': 'off',
+    'spaced-comment': 'off',
   },
 };
