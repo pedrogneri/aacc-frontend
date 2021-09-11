@@ -42,7 +42,6 @@ export const InputContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
 `;
 
 export const StyledIconButton = styled.div`

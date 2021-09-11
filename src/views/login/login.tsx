@@ -7,6 +7,8 @@ import {
   SubTitle,
   Title,
   TitleContainer,
+  InputContainer,
+  TermsOfUse,
 } from './login.style';
 
 const Login = () => {
@@ -33,22 +35,30 @@ const Login = () => {
           Insira seus dados para acessar o gestor de AACC.
         </Description>
 
-        <Input
-          label="E-mail ou RA"
-          inputRef={inputRef}
-          placeholder="alias@fatec.sp.gov.br"
-          value={email}
-          onChange={handleChangeEmail}
-        />
+        <InputContainer>
+          <Input
+            label="E-mail ou RA"
+            inputRef={inputRef}
+            placeholder="alias@fatec.sp.gov.br"
+            value={email}
+            onChange={handleChangeEmail}
+          />
+        </InputContainer>
 
-        <Input
-          label="Senha"
-          type="password"
-          inputRef={inputRef}
-          placeholder="Digite sua senha"
-          value={password}
-          onChange={handleChangePassword}
-        />
+        <InputContainer>
+          <Input
+            label="Senha"
+            type="password"
+            inputRef={inputRef}
+            placeholder="Digite sua senha"
+            value={password}
+            onChange={handleChangePassword}
+          />
+        </InputContainer>
+
+        <TermsOfUse>
+          Ao acessar, concordo com os <u>termos de uso.</u>
+        </TermsOfUse>
       </LoginBlock>
     </Container>
   );

@@ -47,3 +47,13 @@ export const Description = styled.div`
   color: #000;
   padding: 28px 0;
 `;
+
+export const InputContainer = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const TermsOfUse = styled.span`
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+`;
