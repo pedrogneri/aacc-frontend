@@ -5,6 +5,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  outline: none;
+}
+
 #root {
   width: 100vw;
   height: 100vh;
