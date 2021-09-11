@@ -1,9 +1,16 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
 
-import { InputContainer, StyledInput, StyledIconButton } from './input.style';
+import {
+  InputContainer,
+  StyledInput,
+  StyledIconButton,
+  Label,
+} from './input.style';
 
 type Props = {
+  label?: string,
   inputRef: React.RefObject<HTMLInputElement>,
+  type?: string,
   endAdornment?: React.ReactNode,
   value: string,
   placeholder: string,
@@ -13,14 +20,19 @@ type Props = {
 }
 
 const Input = ({
-  inputRef, onClick, endAdornment, ...inputProps
+  label, inputRef, onClick, endAdornment, ...inputProps
 }: Props) => (
-  <InputContainer>
-    <StyledInput ref={inputRef} {...inputProps} />
-    <StyledIconButton onClick={onClick}>
-      {endAdornment}
-    </StyledIconButton>
-  </InputContainer>
+  <>
+    {label && (
+      <Label>{label}</Label>
+    )}
+    <InputContainer>
+      <StyledInput ref={inputRef} {...inputProps} />
+      <StyledIconButton onClick={onClick}>
+        {endAdornment}
+      </StyledIconButton>
+    </InputContainer>
+  </>
 );
 
 export default Input;

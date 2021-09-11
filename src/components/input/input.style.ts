@@ -1,11 +1,17 @@
 import styled from 'styled-components';
 
+export const Label = styled.label`
+  font-size: 14px;
+  line-height: 17px;
+  color: #000;
+`;
+
 export const StyledInput = styled.input`
-  padding: 14px;
+  padding: 12px 6px;
   border: none;
   background-color: transparent;
   color: #000;
-  width: calc(100% - 40px);
+  width: 100%;
 
   border-bottom: 1px solid #C4C4C4;
 
