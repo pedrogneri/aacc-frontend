@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './routes';
 
-import './index.css';
+import { GlobalStyle } from './style';
 
 ReactDOM.render(
     <React.StrictMode>
-      <Routes />
+      <>
+        <GlobalStyle />
+        <Routes />
+      </>
     </React.StrictMode>,
     document.getElementById('root'),
 );
