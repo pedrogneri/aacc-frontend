@@ -10,6 +10,8 @@ import {
   TermsOfUse,
   SubmitButton,
   Header,
+  Footer,
+  RecoverPassword,
 } from './login.style';
 
 const Login = () => {
@@ -69,10 +71,14 @@ const Login = () => {
           Ao acessar, concordo com os <u>termos de uso.</u>
         </TermsOfUse>
 
-        <SubmitButton>
+        <Footer>
+          <SubmitButton>
           Acessar
-          <img src="icons/arrow-right.svg" />
-        </SubmitButton>
+            <img src="icons/arrow-right.svg" />
+          </SubmitButton>
+
+          <RecoverPassword>Recuperar Senha</RecoverPassword>
+        </Footer>
       </Content>
     </Container>
   );

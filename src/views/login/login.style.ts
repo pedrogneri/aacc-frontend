@@ -74,3 +74,17 @@ export const SubmitButton = styled.button`
     padding-left: 10px;
   }
 `;
+
+export const Footer = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const RecoverPassword = styled.a`
+  font-size: 14px;
+  line-height: 17px;
+  text-decoration-line: underline;
+  color: #000;
+  cursor: pointer;
+`;
