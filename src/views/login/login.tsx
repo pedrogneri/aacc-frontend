@@ -3,12 +3,13 @@ import { Input } from '../../components';
 import {
   Container,
   Description,
-  LoginBlock,
+  Content,
   SubTitle,
   Title,
-  TitleContainer,
   InputContainer,
   TermsOfUse,
+  SubmitButton,
+  Header,
 } from './login.style';
 
 const Login = () => {
@@ -31,11 +32,12 @@ const Login = () => {
 
   return (
     <Container>
-      <LoginBlock>
-        <TitleContainer>
+      <Content>
+        <Header>
           <Title>Login</Title>
           <SubTitle>AACC Fatec Campinas</SubTitle>
-        </TitleContainer>
+        </Header>
+
         <Description>
           Insira seus dados para acessar o gestor de AACC.
         </Description>
@@ -59,14 +61,19 @@ const Login = () => {
             value={password}
             onChange={handleChangePassword}
             onClick={changePasswordType}
-            endAdornment={<img src="images/password.svg" />}
+            endAdornment={<img src="icons/password.svg" />}
           />
         </InputContainer>
 
         <TermsOfUse>
           Ao acessar, concordo com os <u>termos de uso.</u>
         </TermsOfUse>
-      </LoginBlock>
+
+        <SubmitButton>
+          Acessar
+          <img src="icons/arrow-right.svg" />
+        </SubmitButton>
+      </Content>
     </Container>
   );
 };

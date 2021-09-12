@@ -8,7 +8,7 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export const LoginBlock = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 24px;
@@ -16,7 +16,7 @@ export const LoginBlock = styled.div`
   width: 300px;
 `;
 
-export const TitleContainer = styled.div`
+export const Header = styled.header`
   display: flex;
   justify-content: center;
   align-self: center;
@@ -57,4 +57,20 @@ export const TermsOfUse = styled.span`
   line-height: 17px;
   color: #000;
   margin-bottom: 60px;
+`;
+
+export const SubmitButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: #fff;
+  padding: 10px 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+
+  & > img {
+    padding-left: 10px;
+  }
 `;
