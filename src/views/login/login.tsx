@@ -15,6 +15,7 @@ const Login = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordType, setPasswordType] = useState('password');
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -22,6 +23,10 @@ const Login = () => {
 
   const handleChangePassword = (event: ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
+  };
+
+  const changePasswordType = () => {
+    setPasswordType((v) => v === 'text' ? 'password' : 'text');
   };
 
   return (
@@ -48,11 +53,13 @@ const Login = () => {
         <InputContainer>
           <Input
             label="Senha"
-            type="password"
+            type={passwordType}
             inputRef={inputRef}
             placeholder="Digite sua senha"
             value={password}
             onChange={handleChangePassword}
+            onClick={changePasswordType}
+            endAdornment={<img src="images/password.svg" />}
           />
         </InputContainer>
 

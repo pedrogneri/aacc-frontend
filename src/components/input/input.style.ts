@@ -13,8 +13,6 @@ export const StyledInput = styled.input`
   color: #000;
   width: 100%;
 
-  border-bottom: 1px solid #C4C4C4;
-
   &::-webkit-input-placeholder {
     color: #C4C4C4;
   }
@@ -37,13 +35,15 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const InputContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid #C4C4C4;
 `;
 
-export const StyledIconButton = styled.div`
+export const IconButton = styled.div`
+  cursor: pointer;
   padding: 5px;
 `;

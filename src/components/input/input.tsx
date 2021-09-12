@@ -1,10 +1,10 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
 
 import {
-  InputContainer,
+  Container,
   StyledInput,
-  StyledIconButton,
   Label,
+  IconButton,
 } from './input.style';
 
 type Props = {
@@ -26,12 +26,14 @@ const Input = ({
     {label && (
       <Label>{label}</Label>
     )}
-    <InputContainer>
+    <Container>
       <StyledInput ref={inputRef} {...inputProps} />
-      <StyledIconButton onClick={onClick}>
-        {endAdornment}
-      </StyledIconButton>
-    </InputContainer>
+      {endAdornment && (
+        <IconButton onClick={onClick}>
+          {endAdornment}
+        </IconButton>
+      )}
+    </Container>
   </>
 );
 

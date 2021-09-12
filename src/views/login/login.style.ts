@@ -56,4 +56,5 @@ export const TermsOfUse = styled.span`
   font-size: 14px;
   line-height: 17px;
   color: #000;
+  margin-bottom: 60px;
 `;
