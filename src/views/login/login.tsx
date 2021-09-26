@@ -48,7 +48,7 @@ const Login = () => {
           <Input
             label="E-mail ou RA"
             inputRef={inputRef}
-            placeholder="alias@fatec.sp.gov.br"
+            placeholder="foo@fatec.sp.gov.br"
             value={email}
             onChange={handleChangeEmail}
           />
@@ -59,7 +59,7 @@ const Login = () => {
             label="Senha"
             type={passwordType}
             inputRef={inputRef}
-            placeholder="Digite sua senha"
+            placeholder="***********"
             value={password}
             onChange={handleChangePassword}
             onClick={changePasswordType}
