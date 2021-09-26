@@ -4,7 +4,7 @@ Projeto web de cadastro de horas complementares para os alunos da Fatec Campinas
 
 [→ backend](https://github.com/GuilhermeMelati/FatecCampinasAACCBackend)
 
-### Integrantes:
+## Integrantes
 
 | <img src="https://avatars.githubusercontent.com/LeNinjaRick" width=115> | <img src="https://avatars.githubusercontent.com/FeSacoli" width=115> | <img src="https://avatars.githubusercontent.com/pedrogneri" width=115> | <img src="https://avatars.githubusercontent.com/gustavohrqz" width=115> | <img src="https://avatars.githubusercontent.com/GuilhermeMelati" width=115> | <img src="https://avatars.githubusercontent.com/gmsl23" width=115> |
 |---|---|---|---|---|---|
