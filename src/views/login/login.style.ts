@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  display: flex;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: #000;
@@ -11,9 +13,10 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  padding: 15vh 10%;
   background-color: #fff;
-  width: 300px;
+  max-width: 450px;
+  max-height: 650px;
 `;
 
 export const Header = styled.header`
@@ -65,8 +68,10 @@ export const SubmitButton = styled.button`
   justify-content: center;
   background-color: #000;
   color: #fff;
-  padding: 10px 16px;
+  padding: 10px 20px;
   font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
   border: none;
   cursor: pointer;
 

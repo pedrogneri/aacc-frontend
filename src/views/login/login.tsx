@@ -73,7 +73,7 @@ const Login = () => {
 
         <Footer>
           <SubmitButton>
-          Acessar
+            Acessar
             <img src="icons/arrow-right.svg" />
           </SubmitButton>
 
