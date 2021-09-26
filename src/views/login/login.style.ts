@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
   background-color: #000;
-  padding: 56px 28px;
+  padding: 2em 3em;
   box-sizing: border-box;
   background-image: url('images/login-cover.jpeg');
   background-position: center;
