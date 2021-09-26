@@ -1,4 +1,5 @@
 # <img align="center" src="./public/logo.svg" width="60px"> AACC | Fatec Campinas
+![licence-badge](https://img.shields.io/github/license/pedrogneri/aacc-frontend) ![commit-badge](https://img.shields.io/github/commit-activity/m/pedrogneri/aacc-frontend)
 
 Projeto web de cadastro de horas complementares para os alunos da Fatec Campinas.
 
