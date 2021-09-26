@@ -8,15 +8,28 @@ export const Container = styled.div`
   background-color: #000;
   padding: 56px 28px;
   box-sizing: border-box;
+
+  @media (max-width: 760px) {
+    padding: 0;
+  }
 `;
 
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 15vh 10%;
+  justify-content: center;
+  padding: 0 5em;
   background-color: #fff;
+  width: 100%;
+  height: 100%;
   max-width: 450px;
   max-height: 650px;
+
+  @media (max-width: 760px) {
+    max-width: inherit;
+    max-height: inherit;
+    padding: 0 3em;
+  }
 `;
 
 export const Header = styled.header`
@@ -78,12 +91,22 @@ export const SubmitButton = styled.button`
   & > img {
     padding-left: 10px;
   }
+
+  @media (max-width: 760px) {
+    width: 100%;
+    margin-bottom: 1em;
+  }
 `;
 
 export const Footer = styled.footer`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 export const RecoverPassword = styled.a`

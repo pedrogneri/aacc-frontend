@@ -41,7 +41,7 @@ const Login = () => {
         </Header>
 
         <Description>
-          Insira seus dados para acessar o gestor de AACC.
+          Insira seus dados para acessar o sistema de AACC
         </Description>
 
         <InputContainer>
