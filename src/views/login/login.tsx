@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import { Input } from '../../components';
 import {
   Container,
@@ -29,7 +29,7 @@ const Login = () => {
   };
 
   const changePasswordType = () => {
-    setPasswordType((v) => v === 'text' ? 'password' : 'text');
+    setPasswordType((v) => (v === 'text' ? 'password' : 'text'));
   };
 
   return (
@@ -63,18 +63,20 @@ const Login = () => {
             value={password}
             onChange={handleChangePassword}
             onClick={changePasswordType}
-            endAdornment={<img src="icons/password.svg" />}
+            endAdornment={<img src="icons/password.svg" alt="mostrar senha" />}
           />
         </InputContainer>
 
         <TermsOfUse>
-          Ao acessar, concordo com os <u>termos de uso.</u>
+          Ao acessar, concordo com os
+          {' '}
+          <u>termos de uso.</u>
         </TermsOfUse>
 
         <Footer>
           <SubmitButton>
             Acessar
-            <img src="icons/arrow-right.svg" />
+            <img src="icons/arrow-right.svg" alt="" />
           </SubmitButton>
 
           <RecoverPassword>Recuperar Senha</RecoverPassword>
@@ -85,4 +87,3 @@ const Login = () => {
 };
 
 export default Login;
-
