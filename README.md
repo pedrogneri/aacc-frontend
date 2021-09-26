@@ -1,4 +1,4 @@
-# AACC | Fatec Campinas
+# Sistema AACC - Frontend | Fatec Campinas
 Projeto web de cadastro de horas complementares para os alunos da Fatec Campinas.
 
 [→ backend](https://github.com/GuilhermeMelati/FatecCampinasAACCBackend)
