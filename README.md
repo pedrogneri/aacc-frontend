@@ -1,3 +1,5 @@
+<img src="./public/logo.svg" width="80px">
+
 # Sistema AACC - Frontend | Fatec Campinas
 Projeto web de cadastro de horas complementares para os alunos da Fatec Campinas.
 
