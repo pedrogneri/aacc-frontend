@@ -8,6 +8,10 @@ export const Container = styled.div`
   background-color: #000;
   padding: 56px 28px;
   box-sizing: border-box;
+  background-image: url('images/login-cover.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media (max-width: 760px) {
     padding: 0;
