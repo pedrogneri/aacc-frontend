@@ -11,4 +11,4 @@ Projeto web de cadastro de horas complementares para os alunos da Fatec Campinas
 | <a href="https://github.com/LeNinjaRick">Ricardo Vaz</a> | <a href="https://github.com/FeSacoli">Felipe Sacoli</a> | <a href="https://github.com/pedrogneri">Pedro Neri</a> | <a href="https://github.com/gustavohrqz">Gustavo Henrique</a> | <a href="https://github.com/GuilhermeMelati">Guilherme Melati</a> | <a href="https://github.com/gmsl23">George Maurício</a> |
 
 ## License
-[MIT](https://github.com/pedrogneri/aacc/blob/master/LICENSE) 
+[MIT](./LICENSE) 
