@@ -8,6 +8,7 @@ import {
 } from './input.style';
 
 type Props = {
+  outlined?: boolean;
   label?: string,
   inputRef: React.RefObject<HTMLInputElement>,
   type?: string,
@@ -20,13 +21,18 @@ type Props = {
 }
 
 const Input = ({
-  label, inputRef, onClick, endAdornment, ...inputProps
+  outlined,
+  label,
+  inputRef,
+  onClick,
+  endAdornment,
+  ...inputProps
 }: Props) => (
   <>
     {label && (
       <Label>{label}</Label>
     )}
-    <Container>
+    <Container outlined={outlined}>
       <StyledInput ref={inputRef} {...inputProps} />
       {endAdornment && (
         <IconButton onClick={onClick}>

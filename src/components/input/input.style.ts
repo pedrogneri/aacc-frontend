@@ -6,6 +6,10 @@ export const Label = styled.label`
   color: #000;
 `;
 
+type InputProps = {
+  outlined?: boolean;
+}
+
 export const StyledInput = styled.input`
   padding: 12px 6px;
   border: none;
@@ -35,15 +39,20 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<InputProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #C4C4C4;
+  width: 100%;
+  border: ${({ outlined }) => (outlined ? '1px solid #c4c4c4' : '')};
 `;
 
 export const IconButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   padding: 5px;
 `;
