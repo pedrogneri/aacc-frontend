@@ -22,15 +22,24 @@ const Header = ({ onSearch }: Props) => {
 
   return (
     <S.Container>
-      <Input
-        outlined
-        inputRef={searchInputRef}
-        value={query}
-        onChange={handleChangeQuery}
-        placeholder="Buscar atividades"
-        onClick={handleSearch}
-        endAdornment={<img src="icons/search.svg" alt="pesquisar" />}
-      />
+      <S.InputContainer>
+        <Input
+          outlined
+          inputRef={searchInputRef}
+          value={query}
+          onChange={handleChangeQuery}
+          placeholder="Buscar atividades"
+          onClick={handleSearch}
+          endAdornment={<img src="icons/search.svg" alt="pesquisar" />}
+        />
+      </S.InputContainer>
+
+      <S.LoggedUser>
+        <S.UserImage src="images/default-user.png" />
+
+        <S.UserName>Jonh D.</S.UserName>
+        <S.UserRole>Aluno</S.UserRole>
+      </S.LoggedUser>
     </S.Container>
   );
 };

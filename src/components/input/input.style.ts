@@ -46,6 +46,7 @@ export const Container = styled.div<InputProps>`
   justify-content: center;
   border-bottom: 1px solid #C4C4C4;
   width: 100%;
+  height: min-content;
   border: ${({ outlined }) => (outlined ? '1px solid #c4c4c4' : '')};
 `;
 
