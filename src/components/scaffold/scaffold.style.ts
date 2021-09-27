@@ -7,7 +7,7 @@ export const Container = styled.div`
     "sidebar header"
     "sidebar content";
   grid-template-columns: 250px 1fr;
-  grid-template-rows: 90px 1fr;
+  grid-template-rows: 150px 1fr;
 `;
 
 export const Header = styled.header`
