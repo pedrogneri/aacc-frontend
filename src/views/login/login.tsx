@@ -1,5 +1,9 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
-import { Input } from '../../components';
+import { useHistory } from 'react-router-dom';
+
+import { Input, Loading } from '../../components';
+import { userService } from '../../services';
+
 import {
   Container,
   Description,
@@ -15,10 +19,13 @@ import {
 } from './login.style';
 
 const Login = () => {
+  const history = useHistory();
+
   const inputRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordType, setPasswordType] = useState('password');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -32,7 +39,18 @@ const Login = () => {
     setPasswordType((v) => (v === 'text' ? 'password' : 'text'));
   };
 
-  return (
+  const doLogin = async () => {
+    setIsLoading(true);
+    try {
+      await userService.login(email, password);
+      history.push('/');
+    } catch {
+      // TODO: Adicionar tratamento de erro
+      console.error('Erro no login');
+    }
+  };
+
+  return isLoading ? <Loading /> : (
     <Container>
       <Content>
         <Header>
@@ -74,7 +92,7 @@ const Login = () => {
         </TermsOfUse>
 
         <Footer>
-          <SubmitButton>
+          <SubmitButton onClick={doLogin}>
             Acessar
             <img src="icons/arrow-right.svg" alt="" />
           </SubmitButton>
