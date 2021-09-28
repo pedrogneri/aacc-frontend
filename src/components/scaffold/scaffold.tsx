@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header } from '..';
+import { Header, Sidebar } from '..';
 
 import * as S from './scaffold.style';
 
@@ -15,7 +15,9 @@ const Scaffold = ({ children, onSearch }: Props) => (
       <Header onSearch={onSearch} />
     </S.Header>
 
-    <S.Sidebar>Sidebar</S.Sidebar>
+    <S.Sidebar>
+      <Sidebar />
+    </S.Sidebar>
 
     <S.Content>{children}</S.Content>
   </S.Container>

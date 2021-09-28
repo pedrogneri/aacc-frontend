@@ -23,8 +23,8 @@ export const LoggedUser = styled.div`
 
 export const UserImage = styled.img`
   grid-area: image;
-  width: 53px;
-  height: 53px;
+  width: 48px;
+  height: 48px;
 `;
 
 export const UserName = styled.div`
