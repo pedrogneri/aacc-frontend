@@ -6,14 +6,14 @@ import { useStoreState } from '../../hooks';
 import { Input } from '..';
 
 import * as S from './header.style';
+import { User } from '../../services/user-service';
 
 type Props = {
+  user: User | null;
   onSearch: Function;
 }
 
-const Header = ({ onSearch }: Props) => {
-  const user = useStoreState(({ loggedUser }) => loggedUser);
-
+const Header = ({ user, onSearch }: Props) => {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
 

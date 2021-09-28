@@ -30,7 +30,7 @@ const Scaffold = ({ children, onSearch }: Props) => {
   return isLoading ? <Loading /> : (
     <S.Container>
       <S.Header>
-        <Header onSearch={onSearch} />
+        <Header user={loggedUser} onSearch={onSearch} />
       </S.Header>
 
       <S.Sidebar>

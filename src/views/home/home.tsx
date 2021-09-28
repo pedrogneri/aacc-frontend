@@ -16,7 +16,7 @@ const Home = () => {
 
   return (
     <Scaffold onSearch={(query: string) => query}>
-      <>aaa</>
+      <></>
     </Scaffold>
   );
 };
