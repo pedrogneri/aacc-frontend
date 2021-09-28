@@ -1,17 +1,47 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 const baseURL = 'http://localhost:4000/api';
 
 axios.defaults.baseURL = baseURL;
 
-export const login = async (user: string, password: string) => {
+type User = {
+  teacherId?: string;
+  name: string;
+  email?: string;
+  accessLevel: 'adm' | 'aluno' | 'professor';
+}
+
+type LoginResponse = {
+  token: string;
+};
+
+type DecodedToken = {
+  idProfessor?: string;
+  acesso: 'adm' | 'aluno' | 'professor';
+  nome: string;
+  email?: string;
+}
+
+export const login = async (loginEntry: string, password: string) => {
   const body = {
-    login: user,
+    login: loginEntry,
     senha: password,
   };
 
-  const response = await axios.post(
+  const response = await axios.post<LoginResponse>(
     '/login', body, { timeout: 10000 },
   );
-  return response;
+
+  const { token } = response.data;
+  const decoded: DecodedToken = await jwtDecode(token);
+
+  const user: User = {
+    teacherId: decoded.idProfessor,
+    accessLevel: decoded.acesso,
+    name: decoded.nome,
+    email: decoded.email,
+  };
+
+  return user;
 };
