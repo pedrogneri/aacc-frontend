@@ -17,7 +17,7 @@ const Sidebar = () => {
       <S.Title>MENU</S.Title>
       <S.Items>
         {MENU_ENTRIES.map(({ imagePath, name }) => (
-          <S.Item>
+          <S.Item key={name}>
             <S.ItemIcon><img src={imagePath} alt="" /></S.ItemIcon>
             <S.ItemName>{name}</S.ItemName>
           </S.Item>
