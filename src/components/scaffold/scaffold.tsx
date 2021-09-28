@@ -1,6 +1,7 @@
-import React from 'react';
-
-import { Header, Sidebar } from '..';
+import React, { useState } from 'react';
+import { useStoreActions, useStoreState } from '../../hooks';
+import { userService } from '../../services';
+import { Header, Loading, Sidebar } from '..';
 
 import * as S from './scaffold.style';
 
@@ -9,18 +10,36 @@ type Props = {
   onSearch: Function;
 }
 
-const Scaffold = ({ children, onSearch }: Props) => (
-  <S.Container>
-    <S.Header>
-      <Header onSearch={onSearch} />
-    </S.Header>
+const Scaffold = ({ children, onSearch }: Props) => {
+  const loggedUser = useStoreState((state) => state.loggedUser);
+  const clearLoggedUser = useStoreActions((actions) => actions.clearLoggedUser);
 
-    <S.Sidebar>
-      <Sidebar />
-    </S.Sidebar>
+  const [isLoading, setIsLoading] = useState(false);
 
-    <S.Content>{children}</S.Content>
-  </S.Container>
-);
+  const handleLogout = async () => {
+    setIsLoading(true);
+
+    try {
+      await userService.logout(loggedUser?.token);
+      clearLoggedUser();
+    } catch {
+      setIsLoading(false);
+    }
+  };
+
+  return isLoading ? <Loading /> : (
+    <S.Container>
+      <S.Header>
+        <Header onSearch={onSearch} />
+      </S.Header>
+
+      <S.Sidebar>
+        <Sidebar onLogout={handleLogout} />
+      </S.Sidebar>
+
+      <S.Content>{children}</S.Content>
+    </S.Container>
+  );
+};
 
 export default Scaffold;

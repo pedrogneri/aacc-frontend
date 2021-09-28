@@ -5,12 +5,14 @@ const baseURL = 'http://localhost:4000/api';
 
 axios.defaults.baseURL = baseURL;
 
+type AccessLevel = 'adm' | 'aluno' | 'professor';
+
 export type User = {
   token: string;
   teacherId?: string;
   name: string;
   email?: string;
-  accessLevel: 'adm' | 'aluno' | 'professor';
+  accessLevel: AccessLevel;
 }
 
 type LoginResponse = {
@@ -19,7 +21,7 @@ type LoginResponse = {
 
 type DecodedToken = {
   idProfessor?: string;
-  acesso: 'adm' | 'aluno' | 'professor';
+  acesso: AccessLevel;
   nome: string;
   email?: string;
 }
@@ -46,4 +48,14 @@ export const login = async (loginEntry: string, password: string) => {
   };
 
   return user;
+};
+
+export const logout = async (token?: string) => {
+  const headers = {
+    'x-access-token': token,
+  };
+
+  await axios.post(
+    '/logout', {}, { headers, timeout: 10000 },
+  );
 };

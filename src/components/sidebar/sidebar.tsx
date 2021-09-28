@@ -1,5 +1,4 @@
 import React from 'react';
-import { useStoreActions } from '../../hooks';
 
 import * as S from './sidebar.style';
 
@@ -8,16 +7,14 @@ type MenuEntry = {
   name: string;
 }
 
-const Sidebar = () => {
-  const clearLoggedUser = useStoreActions((actions) => actions.clearLoggedUser);
+type Props = {
+  onLogout: Function;
+}
 
+const Sidebar = ({ onLogout }: Props) => {
   const MENU_ENTRIES: MenuEntry[] = [
     { imagePath: 'icons/menu/activity.svg', name: 'Atividades' },
   ];
-
-  const handleLogout = () => {
-    clearLoggedUser();
-  };
 
   return (
     <S.Container>
@@ -32,7 +29,7 @@ const Sidebar = () => {
       </S.Items>
 
       <S.FooterButton>
-        <S.Item onClick={handleLogout}>
+        <S.Item onClick={() => onLogout()}>
           <S.ItemIcon><img src="icons/menu/logout.svg" alt="" /></S.ItemIcon>
           <S.ItemName>Sair</S.ItemName>
         </S.Item>
