@@ -1,4 +1,7 @@
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, {
+  ChangeEvent, useMemo, useRef, useState,
+} from 'react';
+import { useStoreState } from '../../hooks';
 
 import { Input } from '..';
 
@@ -9,6 +12,8 @@ type Props = {
 }
 
 const Header = ({ onSearch }: Props) => {
+  const user = useStoreState(({ loggedUser }) => loggedUser);
+
   const searchInputRef = useRef<HTMLInputElement>(null);
   const [query, setQuery] = useState('');
 
@@ -19,6 +24,18 @@ const Header = ({ onSearch }: Props) => {
   const handleSearch = async () => {
     await onSearch(query);
   };
+
+  const userRole = useMemo(() => {
+    switch (user?.accessLevel) {
+      case 'aluno':
+        return 'Aluno';
+      case 'adm':
+      case 'professor':
+        return 'Professor';
+      default:
+        return 'Aluno';
+    }
+  }, [user]);
 
   return (
     <S.Container>
@@ -37,8 +54,8 @@ const Header = ({ onSearch }: Props) => {
       <S.LoggedUser>
         <S.UserImage src="images/default-user.png" />
 
-        <S.UserName>Jonh D.</S.UserName>
-        <S.UserRole>Aluno</S.UserRole>
+        <S.UserName>{user?.name}</S.UserName>
+        <S.UserRole>{userRole}</S.UserRole>
       </S.LoggedUser>
     </S.Container>
   );

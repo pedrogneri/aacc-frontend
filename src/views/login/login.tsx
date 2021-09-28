@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useStoreActions } from '../../hooks';
 
 import { Input, Loading } from '../../components';
 import { userService } from '../../services';
@@ -26,6 +27,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [passwordType, setPasswordType] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
+  const saveLoggedUser = useStoreActions((actions) => actions.saveLoggedUser);
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -42,7 +44,9 @@ const Login = () => {
   const doLogin = async () => {
     setIsLoading(true);
     try {
-      await userService.login(email, password);
+      const user = await userService.login(email, password);
+      saveLoggedUser(user);
+
       history.push('/');
     } catch {
       // TODO: Adicionar tratamento de erro

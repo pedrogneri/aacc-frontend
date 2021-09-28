@@ -5,7 +5,8 @@ const baseURL = 'http://localhost:4000/api';
 
 axios.defaults.baseURL = baseURL;
 
-type User = {
+export type User = {
+  token: string;
   teacherId?: string;
   name: string;
   email?: string;
@@ -41,6 +42,7 @@ export const login = async (loginEntry: string, password: string) => {
     accessLevel: decoded.acesso,
     name: decoded.nome,
     email: decoded.email,
+    token,
   };
 
   return user;
