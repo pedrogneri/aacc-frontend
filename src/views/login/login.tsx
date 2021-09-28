@@ -47,6 +47,7 @@ const Login = () => {
     } catch {
       // TODO: Adicionar tratamento de erro
       console.error('Erro no login');
+      setIsLoading(false);
     }
   };
 
