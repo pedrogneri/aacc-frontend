@@ -1,10 +1,24 @@
-import React from 'react';
-import { Scaffold } from '../../components';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-const Home = () => (
-  <Scaffold onSearch={(query: string) => console.log(query)}>
-    <>aaa</>
-  </Scaffold>
-);
+import { Scaffold } from '../../components';
+import { useStoreState } from '../../hooks';
+
+const Home = () => {
+  const history = useHistory();
+  const loggedUser = useStoreState((state) => state.loggedUser);
+
+  useEffect(() => {
+    if (!loggedUser?.token) {
+      history.push('/login');
+    }
+  }, [loggedUser]);
+
+  return (
+    <Scaffold onSearch={(query: string) => query}>
+      <>aaa</>
+    </Scaffold>
+  );
+};
 
 export default Home;

@@ -4,6 +4,7 @@ import { User } from '../services/user-service';
 interface UserStore {
   loggedUser: User | null;
   saveLoggedUser: Action<UserStore, User>;
+  clearLoggedUser: Action<UserStore>;
 }
 
 export const {

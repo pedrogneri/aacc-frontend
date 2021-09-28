@@ -1,6 +1,8 @@
-import React, { ChangeEvent, useRef, useState } from 'react';
+import React, {
+  ChangeEvent, useEffect, useRef, useState,
+} from 'react';
 import { useHistory } from 'react-router-dom';
-import { useStoreActions } from '../../hooks';
+import { useStoreActions, useStoreState } from '../../hooks';
 
 import { Input, Loading } from '../../components';
 import { userService } from '../../services';
@@ -27,7 +29,15 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [passwordType, setPasswordType] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
+
+  const loggedUser = useStoreState((state) => state.loggedUser);
   const saveLoggedUser = useStoreActions((actions) => actions.saveLoggedUser);
+
+  useEffect(() => {
+    if (loggedUser?.token) {
+      history.push('/');
+    }
+  }, [loggedUser]);
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
