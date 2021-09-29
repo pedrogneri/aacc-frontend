@@ -4,6 +4,8 @@ const baseURL = 'http://localhost:4000/api';
 
 axios.defaults.baseURL = baseURL;
 
+type Status = 'negada' | 'confirmada' | 'pendente';
+
 type ActivitiesResponse = {
   RA: string;
   categoria: string;
@@ -15,7 +17,7 @@ type ActivitiesResponse = {
   nomeAtividade: string;
   nomePalestrante: string;
   organizador: string;
-  status: string;
+  status: Status;
 }
 
 export type Activity = {
@@ -23,7 +25,7 @@ export type Activity = {
   start: Date;
   end: Date;
   name: string;
-  status: string;
+  status: Status;
 }
 
 const convertResponseToActivities = (response: ActivitiesResponse[]) => {
