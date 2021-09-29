@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Scaffold } from '../../components';
+import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 
@@ -44,7 +44,7 @@ const Home = () => {
       loading={isLoading}
       onSearch={(query: string) => query}
     >
-      <></>
+      <ActivitiesTable />
     </Scaffold>
   );
 };

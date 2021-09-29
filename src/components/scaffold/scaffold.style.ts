@@ -12,6 +12,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   grid-area: header;
+  padding: 2vh 3vw 2vh 5vw;
 `;
 
 export const Sidebar = styled.aside`
@@ -21,4 +22,5 @@ export const Sidebar = styled.aside`
 
 export const Content = styled.main`
   grid-area: content;
+  padding: 0 3vw 0 5vw;
 `;
