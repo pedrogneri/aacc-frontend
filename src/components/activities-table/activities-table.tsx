@@ -1,8 +1,13 @@
 import React from 'react';
+import { Activity } from '../../services/activity-service';
 
 import * as S from './activities-table.style';
 
-const ActivityTable = () => (
+type Props = {
+  activities: Activity[];
+}
+
+const ActivityTable = ({ activities }: Props) => (
   <S.Container>
     <S.Fields>
       <S.ColumnName width={30}>
@@ -23,14 +28,16 @@ const ActivityTable = () => (
       <S.ColumnName width={10}>{' '}</S.ColumnName>
     </S.Fields>
 
-    <S.Row>
-      <S.Cell>Curso CSS, Criação de websites</S.Cell>
-      <S.Cell>Aprovada</S.Cell>
-      <S.Cell>M</S.Cell>
-      <S.Cell>GTI</S.Cell>
-      <S.Cell>8 HRS</S.Cell>
-      <S.Cell>I</S.Cell>
-    </S.Row>
+    {activities?.map((activity) => (
+      <S.Row>
+        <S.Cell>{activity.name}</S.Cell>
+        <S.Cell>{activity.status}</S.Cell>
+        <S.Cell>{activity.category}</S.Cell>
+        <S.Cell>GTI</S.Cell>
+        <S.Cell>{activity.start}</S.Cell>
+        <S.Cell>I</S.Cell>
+      </S.Row>
+    ))}
   </S.Container>
 );
 

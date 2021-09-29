@@ -4,10 +4,12 @@ import { useHistory } from 'react-router-dom';
 import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
+import { Activity } from '../../services/activity-service';
 
 const Home = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
+  const [activityList, setActivityList] = useState<Activity[]>([]);
   const loggedUser = useStoreState((state) => state.loggedUser);
 
   const getActivities = async () => {
@@ -15,7 +17,7 @@ const Home = () => {
     try {
       let activities = [];
 
-      if (loggedUser?.accessLevel === 'aluno') {
+      if (loggedUser?.ra) {
         activities = await ActivityService.getStudentActivities(
           loggedUser?.ra as string,
           loggedUser?.token as string,
@@ -24,6 +26,7 @@ const Home = () => {
         activities = await ActivityService.getActivities(loggedUser?.token as string);
       }
 
+      setActivityList(activities);
       setIsLoading(false);
     } catch {
       setIsLoading(false);
@@ -44,7 +47,7 @@ const Home = () => {
       loading={isLoading}
       onSearch={(query: string) => query}
     >
-      <ActivitiesTable />
+      <ActivitiesTable activities={activityList} />
     </Scaffold>
   );
 };
