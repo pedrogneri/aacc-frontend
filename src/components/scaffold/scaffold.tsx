@@ -1,26 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStoreActions, useStoreState } from '../../hooks';
-import { userService } from '../../services';
+import { UserService } from '../../services';
 import { Header, Loading, Sidebar } from '..';
 
 import * as S from './scaffold.style';
 
 type Props = {
+  loading?: boolean;
   children?: React.ReactElement;
   onSearch: Function;
 }
 
-const Scaffold = ({ children, onSearch }: Props) => {
+const Scaffold = ({ loading, children, onSearch }: Props) => {
   const loggedUser = useStoreState((state) => state.loggedUser);
   const clearLoggedUser = useStoreActions((actions) => actions.clearLoggedUser);
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(loading);
+
+  useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
 
   const handleLogout = async () => {
     setIsLoading(true);
 
     try {
-      await userService.logout(loggedUser?.token);
+      await UserService.logout(loggedUser?.token);
       clearLoggedUser();
     } catch {
       setIsLoading(false);

@@ -5,7 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { useStoreActions, useStoreState } from '../../hooks';
 
 import { Input, Loading } from '../../components';
-import { userService } from '../../services';
+import { UserService } from '../../services';
 
 import {
   Container,
@@ -54,7 +54,7 @@ const Login = () => {
   const doLogin = async () => {
     setIsLoading(true);
     try {
-      const user = await userService.login(email, password);
+      const user = await UserService.login(email, password);
       saveLoggedUser(user);
 
       history.push('/');
