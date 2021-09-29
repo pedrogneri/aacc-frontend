@@ -8,6 +8,13 @@ type Props = {
 }
 
 const ActivitiesTable = ({ activities }: Props) => {
+  const getHours = (start: number, end: number) => {
+    const diffInMilliSeconds = Math.abs(start - end) / 1000;
+    const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
+
+    return `${hours} Hrs`;
+  };
+
   const capitalizeValue = (value: string) => {
     const [first, ...rest] = value.split('');
     return first.toUpperCase() + rest.join('');
@@ -47,7 +54,7 @@ const ActivitiesTable = ({ activities }: Props) => {
             </S.Cell>
             <S.Cell>{activity.category}</S.Cell>
             <S.Cell>GTI</S.Cell>
-            <S.Cell>8 Hrs</S.Cell>
+            <S.Cell>{getHours(activity.start, activity.end)}</S.Cell>
             <S.Cell>
               <img src="icons/info.svg" alt="" />
             </S.Cell>

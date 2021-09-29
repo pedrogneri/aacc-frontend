@@ -11,8 +11,8 @@ type ActivitiesResponse = {
   categoria: string;
   cidade: string;
   dataDeEnvio: Date;
-  inicio: Date;
-  termino: Date;
+  inicio: number;
+  termino: number;
   nomeAluno: string;
   nomeAtividade: string;
   nomePalestrante: string;
@@ -22,8 +22,8 @@ type ActivitiesResponse = {
 
 export type Activity = {
   category: string;
-  start: Date;
-  end: Date;
+  start: number;
+  end: number;
   name: string;
   status: Status;
 }
