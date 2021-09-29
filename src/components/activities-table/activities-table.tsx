@@ -34,8 +34,10 @@ const ActivityTable = ({ activities }: Props) => (
         <S.Cell>{activity.status}</S.Cell>
         <S.Cell>{activity.category}</S.Cell>
         <S.Cell>GTI</S.Cell>
-        <S.Cell>{activity.start}</S.Cell>
-        <S.Cell>I</S.Cell>
+        <S.Cell>8 Hrs</S.Cell>
+        <S.Cell>
+          <img src="icons/info.svg" alt="" />
+        </S.Cell>
       </S.Row>
     ))}
   </S.Container>

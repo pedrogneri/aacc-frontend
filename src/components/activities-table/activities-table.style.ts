@@ -19,6 +19,10 @@ export const Cell = styled.td`
   color: #000000;
   font-weight: normal;
   padding: 20px 0;
+
+  &:last-child {
+    text-align: center;
+  }
 `;
 
 type ColumnNameProps = {
