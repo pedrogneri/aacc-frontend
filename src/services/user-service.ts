@@ -13,6 +13,7 @@ export type User = {
   name: string;
   email?: string;
   accessLevel: AccessLevel;
+  ra?: string;
 }
 
 type LoginResponse = {
@@ -24,6 +25,7 @@ type DecodedToken = {
   acesso: AccessLevel;
   nome: string;
   email?: string;
+  ra?: string;
 }
 
 export const login = async (loginEntry: string, password: string) => {
@@ -41,6 +43,7 @@ export const login = async (loginEntry: string, password: string) => {
 
   const user: User = {
     teacherId: decoded.idProfessor,
+    ra: decoded.ra,
     accessLevel: decoded.acesso,
     name: decoded.nome,
     email: decoded.email,

@@ -5,13 +5,13 @@ import {
 import { StoreProvider } from 'easy-peasy';
 
 import { store } from './store';
-import { Home, Login } from './views';
+import { Activities, Login } from './views';
 
 const Routes = () => (
   <StoreProvider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Activities} />
         <Route exact path="/login" component={Login} />
       </Switch>
     </Router>
