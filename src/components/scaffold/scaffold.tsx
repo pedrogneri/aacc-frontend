@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useStoreActions, useStoreState } from '../../hooks';
 import { UserService } from '../../services';
 import { Header, Loading, Sidebar } from '..';
@@ -12,6 +13,7 @@ type Props = {
 }
 
 const Scaffold = ({ loading, children, onSearch }: Props) => {
+  const history = useHistory();
   const loggedUser = useStoreState((state) => state.loggedUser);
   const clearLoggedUser = useStoreActions((actions) => actions.clearLoggedUser);
 
@@ -27,6 +29,8 @@ const Scaffold = ({ loading, children, onSearch }: Props) => {
     try {
       await UserService.logout(loggedUser?.token);
       clearLoggedUser();
+
+      history.push('/login');
     } catch {
       setIsLoading(false);
     }

@@ -50,11 +50,7 @@ const Login = () => {
       const user = await UserService.login(email, password);
       saveLoggedUser(user);
 
-      if (user.accessLevel === 'user') {
-        history.push('/student-dashboard');
-        return;
-      }
-      history.push('/professor-dashboard');
+      history.push('/activities');
     } catch {
       // TODO: Adicionar tratamento de erro
       console.error('Erro no login');
