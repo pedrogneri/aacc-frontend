@@ -26,7 +26,7 @@ export const Categories = styled.div`
   gap: 40px;
   margin-bottom: 2em;
   flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow-x: hidden;
   max-width: 0;
   min-width: 100%;
 `;

@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 export const Container = styled.table`
   width: 100%;
   border-collapse: collapse; 
+  max-width: 1200px;
 `;
 
 export const Fields = styled.tr`
