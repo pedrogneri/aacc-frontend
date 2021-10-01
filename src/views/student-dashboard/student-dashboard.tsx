@@ -57,6 +57,11 @@ const StudentDashboard = () => {
             <CategoryCard percent={percent} category={category} />
           ))}
         </S.Categories>
+
+        <S.AddActivitiesButton>
+          <img src="icons/plus.svg" alt="" />
+          Adicionar atividade
+        </S.AddActivitiesButton>
         <ActivitiesTable activities={activityList} type="student" />
       </>
     </Scaffold>
