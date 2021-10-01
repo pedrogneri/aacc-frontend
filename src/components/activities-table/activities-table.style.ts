@@ -60,7 +60,7 @@ export const Status = styled.div<StatusProps>`
       case 'confirmada':
         return 'rgba(0, 200, 118);';
       case 'pendente':
-        return 'rgba(212, 214, 2)';
+        return 'rgba(212, 160, 2)';
       case 'negada':
         return 'rgba(235, 87, 87);';
       default:
@@ -72,7 +72,7 @@ export const Status = styled.div<StatusProps>`
       case 'confirmada':
         return 'rgba(0, 200, 118, 0.25);';
       case 'pendente':
-        return 'rgba(212, 214, 10, 0.25)';
+        return 'rgba(212,160,2, 0.25)';
       case 'negada':
         return 'rgba(235, 87, 87, 0.25);';
       default:
