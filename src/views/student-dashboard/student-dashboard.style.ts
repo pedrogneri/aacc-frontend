@@ -23,9 +23,12 @@ export const Subtitle = styled.div`
 
 export const Categories = styled.div`
   display: flex;
-  flex-wrap: wrap;
   gap: 40px;
   margin-bottom: 2em;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  max-width: 0;
+  min-width: 100%;
 `;
 
 export const AddActivitiesButton = styled.button`

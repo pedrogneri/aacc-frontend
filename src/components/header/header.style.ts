@@ -68,5 +68,5 @@ export const UserRole = styled.div`
   grid-area: role;
   font-size: 14px;
   line-height: 17px;
-  color: #000;
+  color: #949494;
 `;
