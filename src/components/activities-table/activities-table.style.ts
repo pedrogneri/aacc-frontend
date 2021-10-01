@@ -18,7 +18,11 @@ export const Cell = styled.td`
   line-height: 17px;
   color: #000000;
   font-weight: normal;
-  padding: 20px 0;
+  padding: 20px 12px 20px 0;
+  max-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:last-child {
     text-align: center;
