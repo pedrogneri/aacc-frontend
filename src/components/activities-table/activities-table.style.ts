@@ -49,17 +49,30 @@ export const Status = styled.div<StatusProps>`
   padding: 8px 0;
   width: 104px;
   color: #fff;
+  font-weight: 500;
 
-  background-color: ${({ status }) => {
+  color: ${({ status }) => {
     switch (status) {
       case 'confirmada':
-        return '#64d647';
+        return 'rgba(0, 200, 118);';
       case 'pendente':
-        return '#d4d647';
+        return 'rgba(212, 214, 2)';
       case 'negada':
-        return '#d64747';
+        return 'rgba(235, 87, 87);';
       default:
-        return '#d64747';
+        return 'rgba(235, 87, 87);';
+    }
+  }};
+  background: ${({ status }) => {
+    switch (status) {
+      case 'confirmada':
+        return 'rgba(0, 200, 118, 0.25);';
+      case 'pendente':
+        return 'rgba(212, 214, 10, 0.25)';
+      case 'negada':
+        return 'rgba(235, 87, 87, 0.25);';
+      default:
+        return 'rgba(235, 87, 87, 0.25);';
     }
   }}
 `;
