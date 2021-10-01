@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
@@ -30,7 +29,7 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     getActivities();
-  }, [loggedUser]);
+  }, []);
 
   return (
     <Scaffold
