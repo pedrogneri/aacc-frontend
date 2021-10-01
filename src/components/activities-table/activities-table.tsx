@@ -46,7 +46,7 @@ const ActivitiesTable = ({
   };
 
   const StudentRow = ({ activity }: { activity: Activity }) => (
-    <S.Row key={`${activity.category}-${activity.start}`}>
+    <S.Row>
       <S.Cell>{activity.name}</S.Cell>
       <S.Cell>
         <S.Status status={activity.status}>
@@ -63,7 +63,7 @@ const ActivitiesTable = ({
   );
 
   const ProfessorRow = ({ activity }: { activity: Activity }) => (
-    <S.Row key={`${activity.category}-${activity.start}`}>
+    <S.Row>
       <S.Cell>{activity.name}</S.Cell>
       <S.Cell>{activity.studentName}</S.Cell>
       <S.Cell>GTI</S.Cell>
@@ -87,7 +87,7 @@ const ActivitiesTable = ({
       <thead>
         <S.Fields>
           {columns.map(({ name, width }) => (
-            <S.ColumnName width={width}>
+            <S.ColumnName key={name} width={width}>
               {name}
             </S.ColumnName>
           ))}
@@ -95,8 +95,8 @@ const ActivitiesTable = ({
       </thead>
 
       <tbody>
-        {activities?.map((activity) => (
-          <RowComponent activity={activity} />
+        {activities?.map((activity, index) => (
+          <RowComponent key={index.toString()} activity={activity} />
         ))}
       </tbody>
     </S.Container>
