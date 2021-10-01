@@ -5,6 +5,16 @@ import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 import { Activity } from '../../services/activity-service';
 
+import * as S from './student-dashboard.style';
+
+const CATEGORIES_MOCK = [
+  { percent: 25, category: 'A' },
+  { percent: 50, category: 'B' },
+  { percent: 20, category: 'C' },
+  { percent: 15, category: 'D' },
+  { percent: 5, category: 'E' },
+];
+
 const StudentDashboard = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [activityList, setActivityList] = useState<Activity[]>([]);
@@ -37,9 +47,16 @@ const StudentDashboard = () => {
       onSearch={(query: string) => query}
     >
       <>
-        <div>
-          <CategoryCard percent={25} category="A" />
-        </div>
+        <S.TitleContainer>
+          <S.Title>Dashboard</S.Title>
+          <S.Subtitle>Acompanhe seu progresso</S.Subtitle>
+        </S.TitleContainer>
+
+        <S.Categories>
+          {CATEGORIES_MOCK.map(({ percent, category }) => (
+            <CategoryCard percent={percent} category={category} />
+          ))}
+        </S.Categories>
         <ActivitiesTable activities={activityList} type="student" />
       </>
     </Scaffold>
