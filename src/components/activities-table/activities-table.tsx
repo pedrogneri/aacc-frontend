@@ -18,10 +18,10 @@ const STUDENT_COLUMNS = [
 ];
 
 const PROFESSOR_COLUMNS = [
-  { name: 'Atividade', width: 25 },
-  { name: 'Aluno', width: 20 },
+  { name: 'Atividade', width: 30 },
+  { name: 'Aluno', width: 25 },
   { name: 'Curso', width: 15 },
-  { name: 'Status', width: 25 },
+  { name: 'Status', width: 15 },
   { name: ' ', width: 5 },
 ];
 
