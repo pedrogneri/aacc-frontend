@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Scaffold, ActivitiesTable } from '../../components';
+import { Scaffold, ActivitiesTable, CategoryCard } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 import { Activity } from '../../services/activity-service';
@@ -36,7 +36,12 @@ const StudentDashboard = () => {
       loading={isLoading}
       onSearch={(query: string) => query}
     >
-      <ActivitiesTable activities={activityList} type="student" />
+      <>
+        <div>
+          <CategoryCard percent={25} category="A" />
+        </div>
+        <ActivitiesTable activities={activityList} type="student" />
+      </>
     </Scaffold>
   );
 };
