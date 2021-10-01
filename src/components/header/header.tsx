@@ -51,7 +51,7 @@ const Header = ({ user, onSearch }: Props) => {
       </S.InputContainer>
 
       <S.LoggedUser>
-        <S.UserImage src="images/default-user.png" />
+        <S.UserImage src="https://octodex.github.com/images/codercat.jpg" />
 
         <S.UserName>{user?.name}</S.UserName>
         <S.UserRole>{userRole}</S.UserRole>

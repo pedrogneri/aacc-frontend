@@ -1,10 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 
 import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
-import { Activity, Status } from '../../services/activity-service';
+import { Activity } from '../../services/activity-service';
 
 import * as S from './professor-dashboard.style';
 

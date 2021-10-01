@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const baseURL = 'https://fatec-campinas-aacc.herokuapp.com/api';
+const baseURL = 'http://localhost:4000/api';
 
 axios.defaults.baseURL = baseURL;
 
-type Status = 'negada' | 'confirmada' | 'pendente';
+export type Status = 'negada' | 'confirmada' | 'pendente';
 
 type ActivitiesResponse = {
   RA: string;
@@ -12,7 +12,7 @@ type ActivitiesResponse = {
   cidade: string;
   dataDeEnvio: Date;
   inicio: number;
-  termino: number;
+  horas: number;
   nomeAluno: string;
   nomeAtividade: string;
   nomePalestrante: string;
@@ -23,7 +23,7 @@ type ActivitiesResponse = {
 export type Activity = {
   category: string;
   start: number;
-  end: number;
+  hours: number;
   name: string;
   status: Status;
   studentName: string;
@@ -34,7 +34,7 @@ const convertResponseToActivities = (response: ActivitiesResponse[]) => {
     {
       category: v.categoria,
       start: v.inicio,
-      end: v.termino,
+      hours: v.horas,
       name: v.nomeAtividade,
       status: v.status,
       studentName: v.nomeAluno,
