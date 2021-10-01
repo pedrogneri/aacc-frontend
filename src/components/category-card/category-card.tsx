@@ -14,14 +14,14 @@ const CategoryCard = ({ percent, category }: Props) => (
     <S.Title>{`Categoria ${category}`}</S.Title>
     <S.ProgressContainer>
       <CircularProgressbar
-        value={percent}
+        value={100 - percent}
         text={`${percent}%`}
         strokeWidth={6}
         styles={buildStyles({
           textSize: '14px',
-          pathColor: '#00C876',
+          trailColor: '#00C876',
+          pathColor: '#c4c4c4',
           textColor: '#000',
-          trailColor: '#c4c4c4',
           strokeLinecap: 'butt',
         })}
       />
