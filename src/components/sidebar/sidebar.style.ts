@@ -28,6 +28,7 @@ export const Item = styled.li`
   grid-template-columns: min-content 1fr 1fr 1fr;
   column-gap: 1em;
   cursor: pointer;
+  margin-bottom: 2em;
 `;
 
 export const ItemIcon = styled.div`
@@ -40,7 +41,7 @@ export const ItemIcon = styled.div`
   background-color: #e2e2e2;
 
   & > img {
-    width: 10px;
+    height: 12px;
   }
 `;
 

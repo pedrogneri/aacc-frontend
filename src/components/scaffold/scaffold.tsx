@@ -43,7 +43,10 @@ const Scaffold = ({ loading, children, onSearch }: Props) => {
       </S.Header>
 
       <S.Sidebar>
-        <Sidebar onLogout={handleLogout} />
+        <Sidebar
+          type={loggedUser?.accessLevel === 'user' ? 'student' : 'professor'}
+          onLogout={handleLogout}
+        />
       </S.Sidebar>
 
       <S.Content>{children}</S.Content>

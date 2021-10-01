@@ -8,19 +8,32 @@ type MenuEntry = {
 }
 
 type Props = {
+  type: 'professor' | 'student';
   onLogout: Function;
 }
 
-const Sidebar = ({ onLogout }: Props) => {
-  const MENU_ENTRIES: MenuEntry[] = [
+const Sidebar = ({ type, onLogout }: Props) => {
+  const STUDENT_ENTRIES: MenuEntry[] = [
     { imagePath: 'icons/menu/activity.svg', name: 'Atividades' },
   ];
+
+  const PROFESSOR_ENTRIES: MenuEntry[] = [
+    { imagePath: 'icons/menu/activity.svg', name: 'Atividades' },
+    { imagePath: 'icons/menu/students.svg', name: 'Alunos' },
+    { imagePath: 'icons/menu/reports.svg', name: 'Relatórios' },
+    { imagePath: 'icons/menu/users.svg', name: 'Usuários' },
+  ];
+
+  const menuEntries = {
+    professor: PROFESSOR_ENTRIES,
+    student: STUDENT_ENTRIES,
+  };
 
   return (
     <S.Container>
       <S.Title>MENU</S.Title>
       <S.Items>
-        {MENU_ENTRIES.map(({ imagePath, name }) => (
+        {menuEntries[type].map(({ imagePath, name }) => (
           <S.Item key={name}>
             <S.ItemIcon><img src={imagePath} alt="" /></S.ItemIcon>
             <S.ItemName>{name}</S.ItemName>
