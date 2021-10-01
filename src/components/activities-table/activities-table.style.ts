@@ -30,8 +30,8 @@ type ColumnNameProps = {
 }
 
 export const ColumnName = styled.th<ColumnNameProps>`
-  font-size: 14px;
-  line-height: 17px;
+  font-size: 16px;
+  line-height: 1.2;
   color: #7A7A7A;
   font-weight: normal;
   padding: 16px 0;

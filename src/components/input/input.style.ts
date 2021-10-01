@@ -11,7 +11,7 @@ type InputProps = {
 }
 
 export const StyledInput = styled.input`
-  padding: 12px 6px;
+  padding: 12px 8px;
   border: none;
   background-color: transparent;
   color: #000;
@@ -55,5 +55,5 @@ export const IconButton = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 5px;
+  padding: 0 14px;
 `;

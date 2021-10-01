@@ -39,7 +39,7 @@ const Header = ({ user, onSearch }: Props) => {
   return (
     <S.Container>
       <S.InputContainer>
-        <Input
+        <S.StyledInput
           outlined
           inputRef={searchInputRef}
           value={query}

@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { Input } from '..';
 
 export const Container = styled.div`
   display: flex;
@@ -9,6 +10,31 @@ export const InputContainer = styled.div`
   width: 100%;
   max-width: 440px;
   margin-right: 5em;
+`;
+
+export const StyledInput = styled(Input)`
+  font-size: 18px;
+
+  &::-webkit-input-placeholder {
+    color: #000;
+  }
+  &:-moz-placeholder {
+    color: #000;
+    opacity: 1;
+  }
+  &::-moz-placeholder {
+    color: #000;
+    opacity: 1;
+  }
+  &:-ms-input-placeholder {
+    color: #000;
+  }
+  &::-ms-input-placeholder {
+    color: #000;
+  }
+  &::placeholder {
+    color: #000;
+  }
 `;
 
 export const LoggedUser = styled.div`
