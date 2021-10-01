@@ -30,14 +30,7 @@ const Login = () => {
   const [passwordType, setPasswordType] = useState('password');
   const [isLoading, setIsLoading] = useState(false);
 
-  const loggedUser = useStoreState((state) => state.loggedUser);
   const saveLoggedUser = useStoreActions((actions) => actions.saveLoggedUser);
-
-  useEffect(() => {
-    if (loggedUser?.token) {
-      history.push('/');
-    }
-  }, [loggedUser]);
 
   const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
@@ -57,7 +50,11 @@ const Login = () => {
       const user = await UserService.login(email, password);
       saveLoggedUser(user);
 
-      history.push('/');
+      if (user.accessLevel === 'user') {
+        history.push('/student-dashboard');
+        return;
+      }
+      history.push('/professor-dashboard');
     } catch {
       // TODO: Adicionar tratamento de erro
       console.error('Erro no login');

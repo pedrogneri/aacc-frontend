@@ -1,7 +1,6 @@
 import React, {
   ChangeEvent, useMemo, useRef, useState,
 } from 'react';
-import { useStoreState } from '../../hooks';
 
 import { Input } from '..';
 
@@ -27,7 +26,7 @@ const Header = ({ user, onSearch }: Props) => {
 
   const userRole = useMemo(() => {
     switch (user?.accessLevel) {
-      case 'aluno':
+      case 'user':
         return 'Aluno';
       case 'adm':
       case 'professor':

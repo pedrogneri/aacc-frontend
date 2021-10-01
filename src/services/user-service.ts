@@ -5,7 +5,7 @@ const baseURL = 'https://fatec-campinas-aacc.herokuapp.com/api';
 
 axios.defaults.baseURL = baseURL;
 
-type AccessLevel = 'adm' | 'aluno' | 'professor';
+type AccessLevel = 'adm' | 'user' | 'professor';
 
 export type User = {
   token: string;
