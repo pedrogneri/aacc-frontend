@@ -47,7 +47,7 @@ const Home = () => {
       loading={isLoading}
       onSearch={(query: string) => query}
     >
-      <ActivitiesTable activities={activityList} />
+      <ActivitiesTable activities={activityList} type="student" />
     </Scaffold>
   );
 };

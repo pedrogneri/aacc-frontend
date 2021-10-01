@@ -1,13 +1,38 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Activity } from '../../services/activity-service';
 
 import * as S from './activities-table.style';
 
 type Props = {
   activities: Activity[];
+  type: 'student' | 'professor';
 }
 
-const ActivitiesTable = ({ activities }: Props) => {
+const STUDENT_COLUMNS = [
+  { name: 'Atividade', width: 30 },
+  { name: 'Status', width: 25 },
+  { name: 'Categoria', width: 15 },
+  { name: 'Curso', width: 15 },
+  { name: 'Horas', width: 10 },
+  { name: ' ', width: 5 },
+];
+
+const PROFESSOR_COLUMNS = [
+  { name: 'Atividade', width: 25 },
+  { name: 'Aluno', width: 20 },
+  { name: 'Curso', width: 15 },
+  { name: 'Status', width: 25 },
+  { name: ' ', width: 5 },
+];
+
+const ActivitiesTable = ({
+  activities,
+  type,
+}: Props) => {
+  const columns = useMemo(() => (
+    type === 'student' ? STUDENT_COLUMNS : PROFESSOR_COLUMNS
+  ), [type]);
+
   const getHours = (start: number, end: number) => {
     const diffInMilliSeconds = Math.abs(start - end) / 1000;
     const hours = Math.floor(diffInMilliSeconds / 3600) % 24;
@@ -20,45 +45,58 @@ const ActivitiesTable = ({ activities }: Props) => {
     return first.toUpperCase() + rest.join('');
   };
 
+  const StudentRow = ({ activity }: { activity: Activity }) => (
+    <S.Row key={`${activity.category}-${activity.start}`}>
+      <S.Cell>{activity.name}</S.Cell>
+      <S.Cell>
+        <S.Status status={activity.status}>
+          {capitalizeValue(activity.status)}
+        </S.Status>
+      </S.Cell>
+      <S.Cell>{activity.category}</S.Cell>
+      <S.Cell>GTI</S.Cell>
+      <S.Cell>{getHours(activity.start, activity.end)}</S.Cell>
+      <S.Cell>
+        <img src="icons/info.svg" alt="" />
+      </S.Cell>
+    </S.Row>
+  );
+
+  const ProfessorRow = ({ activity }: { activity: Activity }) => (
+    <S.Row key={`${activity.category}-${activity.start}`}>
+      <S.Cell>{activity.name}</S.Cell>
+      <S.Cell>{activity.studentName}</S.Cell>
+      <S.Cell>GTI</S.Cell>
+      <S.Cell>
+        <S.Status status={activity.status}>
+          {capitalizeValue(activity.status)}
+        </S.Status>
+      </S.Cell>
+      <S.Cell>
+        <img src="icons/info.svg" alt="" />
+      </S.Cell>
+    </S.Row>
+  );
+
+  const RowComponent = useMemo(() => (
+    type === 'student' ? StudentRow : ProfessorRow
+  ), [type]);
+
   return (
     <S.Container>
       <thead>
         <S.Fields>
-          <S.ColumnName width={30}>
-            Atividade
-          </S.ColumnName>
-          <S.ColumnName width={25}>
-            Status
-          </S.ColumnName>
-          <S.ColumnName width={15}>
-            Categoria
-          </S.ColumnName>
-          <S.ColumnName width={15}>
-            Curso
-          </S.ColumnName>
-          <S.ColumnName width={10}>
-            Horas
-          </S.ColumnName>
-          <S.ColumnName width={5}>{' '}</S.ColumnName>
+          {columns.map(({ name, width }) => (
+            <S.ColumnName width={width}>
+              {name}
+            </S.ColumnName>
+          ))}
         </S.Fields>
       </thead>
 
       <tbody>
         {activities?.map((activity) => (
-          <S.Row>
-            <S.Cell>{activity.name}</S.Cell>
-            <S.Cell>
-              <S.Status status={activity.status}>
-                {capitalizeValue(activity.status)}
-              </S.Status>
-            </S.Cell>
-            <S.Cell>{activity.category}</S.Cell>
-            <S.Cell>GTI</S.Cell>
-            <S.Cell>{getHours(activity.start, activity.end)}</S.Cell>
-            <S.Cell>
-              <img src="icons/info.svg" alt="" />
-            </S.Cell>
-          </S.Row>
+          <RowComponent activity={activity} />
         ))}
       </tbody>
     </S.Container>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const baseURL = 'http://localhost:4000/api';
+const baseURL = 'https://fatec-campinas-aacc.herokuapp.com/api';
 
 axios.defaults.baseURL = baseURL;
 

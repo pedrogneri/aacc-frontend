@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:4000/api';
+const baseURL = 'https://fatec-campinas-aacc.herokuapp.com/api';
 
 axios.defaults.baseURL = baseURL;
 
@@ -26,6 +26,7 @@ export type Activity = {
   end: number;
   name: string;
   status: Status;
+  studentName: string;
 }
 
 const convertResponseToActivities = (response: ActivitiesResponse[]) => {
@@ -36,6 +37,7 @@ const convertResponseToActivities = (response: ActivitiesResponse[]) => {
       end: v.termino,
       name: v.nomeAtividade,
       status: v.status,
+      studentName: v.nomeAluno,
     }
   ));
 
