@@ -1,5 +1,5 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
-import { TextField, InputAdornment, IconButton } from '@material-ui/core';
+import { InputAdornment, IconButton } from '@material-ui/core';
 
 import * as S from './input.style';
 
@@ -14,6 +14,7 @@ type Props = {
   endAdornment?: React.ReactNode,
   value?: string,
   placeholder?: string,
+  errorMessage?: string | boolean,
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void,
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void,
   onClick?: () => void,
@@ -28,6 +29,7 @@ const Input = ({
   startAdornment,
   endAdornment,
   placeholder,
+  errorMessage,
   ...rest
 }: Props) => (
   <>
@@ -39,6 +41,8 @@ const Input = ({
       className={className}
       ref={inputRef}
       color="primary"
+      error={!!errorMessage}
+      helperText={errorMessage}
       InputProps={{
         placeholder,
         startAdornment: !!startAdornment && (
