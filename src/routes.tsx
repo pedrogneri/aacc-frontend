@@ -5,35 +5,49 @@ import {
 import { useStoreState } from './hooks';
 
 import {
-  Login, ProfessorDashboard, StudentDashboard,
+  ActivityForm,
+  Login,
+  ProfessorDashboard,
+  StudentDashboard,
 } from './views';
 
 type PrivateRouteProps = {
   children: React.ReactElement;
-  isAuthorized: boolean;
   path: string;
+  isAuthorized: boolean;
 }
 
 const PrivateRoute = ({
-  children, isAuthorized, path,
+  children, path, isAuthorized,
 }: PrivateRouteProps) => (
-  <Route exact path={path}>
-    {isAuthorized ? children : <Redirect push to="/login" />}
-  </Route>
+  <Switch>
+    <Route
+      exact
+      path={path}
+      render={() => (
+        isAuthorized ? children : <Redirect push to="/login" />
+      )}
+    />
+  </Switch>
 );
 
 const Routes = () => {
+  const isLoggedIn = useStoreState((state) => state.isLoggedIn);
   const loggedUser = useStoreState((state) => state.loggedUser);
 
   return (
     <Router>
       <Switch>
-        <Route exact path="/login">
-          {loggedUser?.token ? <Redirect push to="/activities" /> : <Login />}
-        </Route>
-        <PrivateRoute path="/activities" isAuthorized={!!loggedUser?.token}>
-          {loggedUser?.accessLevel === 'user' ? <StudentDashboard /> : <ProfessorDashboard />}
+        <PrivateRoute path="/activities" isAuthorized={isLoggedIn}>
+          {loggedUser?.accessLevel === 'user'
+            ? <StudentDashboard /> : <ProfessorDashboard />}
         </PrivateRoute>
+        <PrivateRoute path="/create-activity" isAuthorized={isLoggedIn}>
+          <ActivityForm />
+        </PrivateRoute>
+        <Route exact path="/login">
+          {isLoggedIn ? <Redirect push to="/activities" /> : <Login />}
+        </Route>
 
         <Route path="/">
           <Redirect push to="/login" />
