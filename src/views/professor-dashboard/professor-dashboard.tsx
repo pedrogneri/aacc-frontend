@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
-import { Activity } from '../../services/activity-service';
+import { Activity } from '../../interfaces';
 
 import * as S from './professor-dashboard.style';
 

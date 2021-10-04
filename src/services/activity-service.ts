@@ -1,10 +1,9 @@
 import axios from 'axios';
+import { Activity, Status } from '../interfaces';
 
 const baseURL = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = baseURL;
-
-export type Status = 'negada' | 'confirmada' | 'pendente';
 
 type ActivitiesResponse = {
   RA: string;
@@ -18,15 +17,6 @@ type ActivitiesResponse = {
   nomePalestrante: string;
   organizador: string;
   status: Status;
-}
-
-export type Activity = {
-  category: string;
-  start: number;
-  hours: number;
-  name: string;
-  status: Status;
-  studentName: string;
 }
 
 const convertResponseToActivities = (response: ActivitiesResponse[]) => {

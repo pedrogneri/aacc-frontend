@@ -1,20 +1,12 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { User } from '../interfaces';
 
 const baseURL = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = baseURL;
 
 type AccessLevel = 'adm' | 'user' | 'professor';
-
-export type User = {
-  token: string;
-  teacherId?: string;
-  name: string;
-  email?: string;
-  accessLevel: AccessLevel;
-  ra?: string;
-}
 
 type LoginResponse = {
   token: string;

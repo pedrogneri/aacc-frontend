@@ -5,7 +5,7 @@ import {
 } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
-import { Activity } from '../../services/activity-service';
+import { Activity } from '../../interfaces';
 
 import * as S from './student-dashboard.style';
 

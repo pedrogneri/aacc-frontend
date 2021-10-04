@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 
 import * as S from './header.style';
-import { User } from '../../services/user-service';
+import { User } from '../../interfaces';
 
 type Props = {
   user: User | null;

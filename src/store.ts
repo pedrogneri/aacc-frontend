@@ -1,14 +1,7 @@
 import {
-  createStore, action, Action, persist, computed, Computed,
+  createStore, action, persist, computed,
 } from 'easy-peasy';
-import { User } from './services/user-service';
-
-interface UserStore {
-  loggedUser: User | null;
-  isLoggedIn: Computed<UserStore, boolean>;
-  saveLoggedUser: Action<UserStore, User>;
-  clearLoggedUser: Action<UserStore>;
-}
+import { UserStore } from './interfaces/store';
 
 export const store = createStore<UserStore>(
   persist({

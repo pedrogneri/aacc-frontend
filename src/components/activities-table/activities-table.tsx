@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Activity } from '../../services/activity-service';
+import { Activity } from '../../interfaces';
 
 import * as S from './activities-table.style';
 
