@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
-import { InputAdornment, IconButton } from '@material-ui/core';
+import { InputAdornment, IconButton } from '@mui/material';
 
 import * as S from './input.style';
 
 type Props = {
   className?: string;
   outlined?: boolean;
+  multiline?: boolean;
   label?: string,
   inputRef?: React.RefObject<HTMLInputElement>,
   type?: string,
@@ -23,6 +24,7 @@ type Props = {
 const Input = ({
   className,
   outlined,
+  multiline,
   label,
   inputRef,
   onClick,
@@ -43,6 +45,7 @@ const Input = ({
       color="primary"
       error={!!errorMessage}
       helperText={errorMessage}
+      multiline={multiline}
       InputProps={{
         placeholder,
         startAdornment: !!startAdornment && (

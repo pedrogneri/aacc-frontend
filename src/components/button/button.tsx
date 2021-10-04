@@ -1,6 +1,6 @@
 import React, { MouseEventHandler } from 'react';
-import { Button as MuiButton } from '@material-ui/core';
-import { styled } from '@material-ui/core/styles';
+import { Button as MuiButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
 
 type Props = {
   text: string;

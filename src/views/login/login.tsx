@@ -1,10 +1,11 @@
 import React, {
-  ChangeEvent, useEffect, useRef, useState,
+  ChangeEvent, useRef, useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useStoreActions, useStoreState } from '../../hooks';
+import { ArrowRightAlt } from '@mui/icons-material';
+import { useStoreActions } from '../../hooks';
 
-import { Input, Loading } from '../../components';
+import { Input, Loading, Button } from '../../components';
 import { UserService } from '../../services';
 
 import {
@@ -100,11 +101,7 @@ const Login = () => {
         </TermsOfUse>
 
         <Footer>
-          <SubmitButton onClick={doLogin}>
-            Acessar
-            <img src="icons/arrow-right.svg" alt="" />
-          </SubmitButton>
-
+          <Button onClick={doLogin} text="Acessar" endIcon={<ArrowRightAlt />} />
           <RecoverPassword>Recuperar Senha</RecoverPassword>
         </Footer>
       </Content>
