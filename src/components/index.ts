@@ -5,3 +5,4 @@ export * from './sidebar';
 export * from './loading';
 export * from './activities-table';
 export * from './category-card';
+export * from './button';
