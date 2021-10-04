@@ -2,8 +2,6 @@ import React, {
   ChangeEvent, useMemo, useRef, useState,
 } from 'react';
 
-import { Input } from '..';
-
 import * as S from './header.style';
 import { User } from '../../services/user-service';
 

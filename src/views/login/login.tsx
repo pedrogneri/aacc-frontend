@@ -2,7 +2,7 @@ import React, {
   ChangeEvent, useRef, useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
-import { ArrowRightAlt } from '@mui/icons-material';
+import { ArrowRightAlt, Visibility, VisibilityOff } from '@mui/icons-material';
 import { useStoreActions } from '../../hooks';
 
 import { Input, Loading, Button } from '../../components';
@@ -90,7 +90,7 @@ const Login = () => {
             value={password}
             onChange={handleChangePassword}
             onClick={changePasswordType}
-            endAdornment={<img src="icons/password.svg" alt="mostrar senha" />}
+            endAdornment={passwordType === 'text' ? <VisibilityOff /> : <Visibility />}
           />
         </InputContainer>
 

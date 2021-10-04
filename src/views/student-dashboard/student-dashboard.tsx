@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
-import { Scaffold, ActivitiesTable, CategoryCard } from '../../components';
+import {
+  Scaffold, ActivitiesTable, CategoryCard, Button,
+} from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 import { Activity } from '../../services/activity-service';
@@ -58,10 +60,7 @@ const StudentDashboard = () => {
           ))}
         </S.Categories>
 
-        <S.AddActivitiesButton>
-          <img src="icons/plus.svg" alt="" />
-          Adicionar atividade
-        </S.AddActivitiesButton>
+        <Button text="Adicionar atividade" startIcon={<img src="icons/plus.svg" alt="" />} />
         <ActivitiesTable activities={activityList} type="student" />
       </>
     </Scaffold>
