@@ -56,7 +56,7 @@ const StudentDashboard = () => {
 
         <S.Categories>
           {CATEGORIES_MOCK.map(({ percent, category }) => (
-            <CategoryCard percent={percent} category={category} />
+            <CategoryCard key={category} percent={percent} category={category} />
           ))}
         </S.Categories>
 
