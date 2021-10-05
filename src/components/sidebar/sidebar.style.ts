@@ -1,9 +1,9 @@
+import { ListItem, ListItemButton } from '@mui/material';
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 3em 1em;
   height: 100%;
 `;
 
@@ -11,24 +11,13 @@ export const Title = styled.div`
   font-size: 14px;
   line-height: 17px;
   color: #000;
+  padding: 2em 1em;
 `;
 
-export const Items = styled.ul`
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  margin-top: 2em;
-`;
-
-export const Item = styled.li`
-  display: grid;
-  grid-template-areas:
-  "icon name name value";
-  align-items: center;
-  grid-template-columns: min-content 1fr 1fr 1fr;
-  column-gap: 1em;
-  cursor: pointer;
-  margin-bottom: 2em;
+export const StyledButtonListItem = styled(ListItemButton)`
+  &.MuiListItemButton-root {
+    padding: 18px;
+  }
 `;
 
 export const ItemIcon = styled.div`
@@ -51,4 +40,5 @@ export const ItemName = styled.span`
 
 export const FooterButton = styled.div`
   margin-top: auto;
+  margin-bottom: 2em;
 `;

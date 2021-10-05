@@ -8,6 +8,9 @@ import {
   ExitToAppOutlined,
 } from '@mui/icons-material';
 
+import {
+  List, ListItem, ListItemIcon,
+} from '@mui/material';
 import * as S from './sidebar.style';
 
 type MenuEntry = {
@@ -47,24 +50,28 @@ const Sidebar = ({ type, onLogout }: Props) => {
   return (
     <S.Container>
       <S.Title>MENU</S.Title>
-      <S.Items>
+      <List>
         {menuEntries[type].map(({ Icon, name, route }) => (
-          <S.Item key={name} onClick={() => handleClickItem(route)}>
-            <S.ItemIcon>
-              <Icon />
-            </S.ItemIcon>
-            <S.ItemName>{name}</S.ItemName>
-          </S.Item>
+          <ListItem disablePadding key={name}>
+            <S.StyledButtonListItem onClick={() => handleClickItem(route)}>
+              <ListItemIcon>
+                <Icon />
+              </ListItemIcon>
+              <S.ItemName>{name}</S.ItemName>
+            </S.StyledButtonListItem>
+          </ListItem>
         ))}
-      </S.Items>
+      </List>
 
       <S.FooterButton>
-        <S.Item onClick={() => onLogout()}>
-          <S.ItemIcon>
-            <ExitToAppOutlined />
-          </S.ItemIcon>
-          <S.ItemName>Sair</S.ItemName>
-        </S.Item>
+        <ListItem disablePadding>
+          <S.StyledButtonListItem onClick={() => onLogout()}>
+            <ListItemIcon>
+              <ExitToAppOutlined />
+            </ListItemIcon>
+            <S.ItemName>Sair</S.ItemName>
+          </S.StyledButtonListItem>
+        </ListItem>
       </S.FooterButton>
     </S.Container>
   );
