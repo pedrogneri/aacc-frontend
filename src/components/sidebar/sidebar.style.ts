@@ -40,8 +40,8 @@ export const ItemIcon = styled.div`
   height: 34px;
   background-color: #e2e2e2;
 
-  & > img {
-    height: 12px;
+  & > svg {
+    height: 20px;
   }
 `;
 

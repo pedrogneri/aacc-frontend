@@ -1,9 +1,17 @@
 import React from 'react';
 
+import {
+  AssignmentOutlined,
+  SchoolOutlined,
+  AssessmentOutlined,
+  PeopleAltOutlined,
+  ExitToAppOutlined,
+} from '@mui/icons-material';
+
 import * as S from './sidebar.style';
 
 type MenuEntry = {
-  imagePath: string;
+  Icon: React.FC;
   name: string;
 }
 
@@ -14,14 +22,14 @@ type Props = {
 
 const Sidebar = ({ type, onLogout }: Props) => {
   const STUDENT_ENTRIES: MenuEntry[] = [
-    { imagePath: 'icons/menu/activity.svg', name: 'Atividades' },
+    { Icon: AssignmentOutlined, name: 'Atividades' },
   ];
 
   const PROFESSOR_ENTRIES: MenuEntry[] = [
-    { imagePath: 'icons/menu/activity.svg', name: 'Atividades' },
-    { imagePath: 'icons/menu/students.svg', name: 'Alunos' },
-    { imagePath: 'icons/menu/reports.svg', name: 'Relatórios' },
-    { imagePath: 'icons/menu/users.svg', name: 'Usuários' },
+    { Icon: AssignmentOutlined, name: 'Atividades' },
+    { Icon: SchoolOutlined, name: 'Alunos' },
+    { Icon: AssessmentOutlined, name: 'Relatórios' },
+    { Icon: PeopleAltOutlined, name: 'Usuários' },
   ];
 
   const menuEntries = {
@@ -33,9 +41,11 @@ const Sidebar = ({ type, onLogout }: Props) => {
     <S.Container>
       <S.Title>MENU</S.Title>
       <S.Items>
-        {menuEntries[type].map(({ imagePath, name }) => (
+        {menuEntries[type].map(({ Icon, name }) => (
           <S.Item key={name}>
-            <S.ItemIcon><img src={imagePath} alt="" /></S.ItemIcon>
+            <S.ItemIcon>
+              <Icon />
+            </S.ItemIcon>
             <S.ItemName>{name}</S.ItemName>
           </S.Item>
         ))}
@@ -43,7 +53,9 @@ const Sidebar = ({ type, onLogout }: Props) => {
 
       <S.FooterButton>
         <S.Item onClick={() => onLogout()}>
-          <S.ItemIcon><img src="icons/menu/logout.svg" alt="" /></S.ItemIcon>
+          <S.ItemIcon>
+            <ExitToAppOutlined />
+          </S.ItemIcon>
           <S.ItemName>Sair</S.ItemName>
         </S.Item>
       </S.FooterButton>
