@@ -11,6 +11,12 @@ export const StyledTextField = styled(TextField)({
   '& label.Mui-focused': {
     color: '#000',
   },
+  '& .MuiInput-input': {
+    padding: '8px 0',
+  },
+  '& .MuiOutlinedInput-input': {
+    padding: '8px',
+  },
   '& .MuiInput-underline:after': {
     borderBottomColor: '#000',
   },

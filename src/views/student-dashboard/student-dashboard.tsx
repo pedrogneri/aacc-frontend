@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
+import { AddBoxOutlined } from '@mui/icons-material';
 import {
   Scaffold, ActivitiesTable, CategoryCard, Button,
 } from '../../components';
@@ -18,6 +20,7 @@ const CATEGORIES_MOCK = [
 ];
 
 const StudentDashboard = () => {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [activityList, setActivityList] = useState<Activity[]>([]);
   const loggedUser = useStoreState((state) => state.loggedUser);
@@ -37,6 +40,10 @@ const StudentDashboard = () => {
     } catch {
       setIsLoading(false);
     }
+  };
+
+  const goToActivityForm = () => {
+    history.push('/create-activity');
   };
 
   useEffect(() => {
@@ -60,7 +67,11 @@ const StudentDashboard = () => {
           ))}
         </S.Categories>
 
-        <Button text="Adicionar atividade" startIcon={<img src="icons/plus.svg" alt="" />} />
+        <Button
+          onClick={goToActivityForm}
+          text="Adicionar atividade"
+          startIcon={<AddBoxOutlined />}
+        />
         <ActivitiesTable activities={activityList} type="student" />
       </>
     </Scaffold>
