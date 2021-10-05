@@ -1,5 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
+import { TabContext, TabList } from '@mui/lab';
+
 import { Scaffold, ActivitiesTable } from '../../components';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
@@ -44,18 +46,12 @@ const ProfessorDashboard = () => {
     >
       <>
         <S.TabsContainer>
-          <S.Tab
-            onClick={() => setActiveTab('pending')}
-            isActive={activeTab === 'pending'}
-          >
-            Pendentes
-          </S.Tab>
-          <S.Tab
-            onClick={() => setActiveTab('finished')}
-            isActive={activeTab === 'finished'}
-          >
-            Avaliadas
-          </S.Tab>
+          <TabContext value={activeTab}>
+            <S.StyledTabList onChange={(_, value) => setActiveTab(value)}>
+              <S.StyledTab label="Pendentes" value="pending" />
+              <S.StyledTab label="Avaliadas" value="finished" />
+            </S.StyledTabList>
+          </TabContext>
         </S.TabsContainer>
 
         <ActivitiesTable activities={tabActivities} type="professor" />

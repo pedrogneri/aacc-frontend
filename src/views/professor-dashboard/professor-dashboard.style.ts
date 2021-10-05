@@ -1,29 +1,27 @@
+import { TabList } from '@mui/lab';
+import { Tab } from '@mui/material';
+import { styled as muiStyled } from '@mui/material/styles';
+
 import styled from 'styled-components/macro';
 
 export const TabsContainer = styled.div`
   display: flex;
-  align-items: center;
   width: 100%;
   margin-bottom: 3em;
 `;
 
-type TabProps = {
-  isActive: boolean;
-}
+export const StyledTab = muiStyled(Tab)({
+  fontSize: '20px',
+  fontFamily: '-apple-system,\'Montserrat\',sans-serif',
+  textTransform: 'none',
 
-export const Tab = styled.div<TabProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  line-height: 29px;
-  color: #000;
-  padding: 8px 0;
-  cursor: pointer;
-  border-bottom: 1px solid ${({ isActive }) => (isActive ? '#000' : 'transparent')};
-  font-weight: normal;
+  '&.Mui-selected': {
+    color: '#000',
+  },
+});
 
-  &:not(:first-child) {
-    margin-left: 30px;
-  }
-`;
+export const StyledTabList = muiStyled(TabList)({
+  '& .MuiTabs-indicator': {
+    backgroundColor: '#000',
+  },
+});
