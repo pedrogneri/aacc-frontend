@@ -1,9 +1,11 @@
 import React, {
-  ChangeEvent, useMemo, useRef, useState,
+  ChangeEvent, FormEvent, useMemo, useRef, useState,
 } from 'react';
 
-import * as S from './header.style';
+import { Search } from '@mui/icons-material';
 import { User } from '../../interfaces';
+
+import * as S from './header.style';
 
 type Props = {
   user: User | null;
@@ -18,7 +20,8 @@ const Header = ({ user, onSearch }: Props) => {
     setQuery(event.target.value);
   };
 
-  const handleSearch = async () => {
+  const handleSearch = async (e: FormEvent) => {
+    e.preventDefault();
     await onSearch(query);
   };
 
@@ -36,15 +39,14 @@ const Header = ({ user, onSearch }: Props) => {
 
   return (
     <S.Container>
-      <S.InputContainer>
+      <S.InputContainer onSubmit={handleSearch}>
         <S.StyledInput
           outlined
           inputRef={searchInputRef}
           value={query}
           onChange={handleChangeQuery}
           placeholder="Buscar atividades"
-          onClick={handleSearch}
-          endAdornment={<img src="icons/search.svg" alt="pesquisar" />}
+          startAdornment={<Search />}
         />
       </S.InputContainer>
 

@@ -1,6 +1,11 @@
 import { TextField } from '@mui/material';
 import styled from 'styled-components/macro';
 
+export const Container = styled.div`
+  max-width: 440px;
+  margin-bottom: 16px;
+`;
+
 export const Label = styled.label`
   font-size: 14px;
   line-height: 17px;
@@ -18,18 +23,18 @@ export const StyledTextField = styled(TextField)({
     padding: '8px',
   },
   '& .MuiInput-underline:after': {
-    borderBottomColor: '#000',
+    borderBottomColor: '#c4c4c4',
   },
   '& .MuiOutlinedInput-root': {
     '& fieldset': {
-      borderColor: '#000',
+      borderColor: '#c4c4c4',
     },
     '&:hover fieldset': {
-      borderColor: '#000',
+      borderColor: '#c4c4c4',
     },
     '&.Mui-focused fieldset': {
       borderWidth: '1px',
-      borderColor: '#000',
+      borderColor: '#c4c4c4',
     },
   },
 });

@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const InputContainer = styled.div`
+export const InputContainer = styled.form`
   width: 100%;
   max-width: 440px;
   margin-right: 5em;

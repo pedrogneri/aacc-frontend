@@ -34,10 +34,14 @@ const Input = ({
   errorMessage,
   ...rest
 }: Props) => (
-  <>
+  <S.Container>
+    {label && (
+      <S.Label>
+        {label}
+      </S.Label>
+    )}
     <S.StyledTextField
       fullWidth
-      label={label}
       variant={outlined ? 'outlined' : 'standard'}
       margin="dense"
       className={className}
@@ -50,9 +54,7 @@ const Input = ({
         placeholder,
         startAdornment: !!startAdornment && (
           <InputAdornment position="start">
-            <IconButton edge={outlined ? 'start' : 'end'} onClick={onClick}>
-              {startAdornment}
-            </IconButton>
+            {startAdornment}
           </InputAdornment>
         ),
         endAdornment: !!endAdornment && (
@@ -65,7 +67,7 @@ const Input = ({
       }}
       {...rest}
     />
-  </>
+  </S.Container>
 );
 
 export default Input;
