@@ -13,7 +13,7 @@ type Props = {
   name?: string;
   startAdornment?: React.ReactNode,
   endAdornment?: React.ReactNode,
-  value?: string,
+  value?: string | number,
   placeholder?: string,
   errorMessage?: string | boolean,
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void,

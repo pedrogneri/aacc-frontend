@@ -1,23 +1,9 @@
 import axios from 'axios';
-import { Activity, Status } from '../interfaces';
+import { ActivitiesResponse, Activity, Status } from '../interfaces';
 
 const baseURL = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = baseURL;
-
-type ActivitiesResponse = {
-  RA: string;
-  categoria: string;
-  cidade: string;
-  dataDeEnvio: Date;
-  inicio: number;
-  horas: number;
-  nomeAluno: string;
-  nomeAtividade: string;
-  nomePalestrante: string;
-  organizador: string;
-  status: Status;
-}
 
 const convertResponseToActivities = (response: ActivitiesResponse[]) => {
   const activities: Activity[] = response.map((v) => (
@@ -54,4 +40,14 @@ export const getActivities = async (token: string) => {
   );
 
   return convertResponseToActivities(data);
+};
+
+export const createActivity = async (token: string, activity: Partial<ActivitiesResponse>) => {
+  const headers = {
+    'x-access-token': token,
+  };
+
+  await axios.post(
+    'atividade', activity, { headers },
+  );
 };
