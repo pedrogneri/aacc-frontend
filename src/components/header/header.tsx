@@ -2,7 +2,7 @@ import React, {
   ChangeEvent, FormEvent, useMemo, useRef, useState,
 } from 'react';
 
-import { Search } from '@mui/icons-material';
+import { Search, Person } from '@mui/icons-material';
 import { User } from '../../interfaces';
 
 import * as S from './header.style';
@@ -51,7 +51,9 @@ const Header = ({ user, onSearch }: Props) => {
       </S.InputContainer>
 
       <S.LoggedUser>
-        <S.UserImage src="https://octodex.github.com/images/codercat.jpg" />
+        <S.UserImage>
+          <Person />
+        </S.UserImage>
 
         <S.UserName>{user?.name}</S.UserName>
         <S.UserRole>{userRole}</S.UserRole>

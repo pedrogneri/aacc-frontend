@@ -46,10 +46,20 @@ export const LoggedUser = styled.div`
   grid-template-rows: min-content 1fr;
 `;
 
-export const UserImage = styled.img`
+export const UserImage = styled.div`
   grid-area: image;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 48px;
   height: 48px;
+  background-color: #c4c4c4;
+
+  & > svg {
+    color: #7a7a7a;
+    width: 32px;
+    height: 32px;
+  }
 `;
 
 export const UserName = styled.div`
