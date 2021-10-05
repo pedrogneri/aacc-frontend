@@ -26,6 +26,8 @@ export const ProgressContainer = styled.div`
 `;
 
 export const Button = styled.div`
+  display: flex;
+  align-items: center;
   font-weight: 500;
   font-size: 10px;
   line-height: 12px;
@@ -34,8 +36,8 @@ export const Button = styled.div`
   width: 100%;
   cursor: pointer;
 
-  & > img {
-    width: 10px;
-    margin-left: 1em;
+  & > svg {
+    width: 20px;
+    margin-left: 5px;
   }
 `;

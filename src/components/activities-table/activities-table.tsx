@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import { MoreVertOutlined, InfoOutlined } from '@mui/icons-material';
+import { IconButton } from '@mui/material';
 import { Activity } from '../../interfaces';
 
 import * as S from './activities-table.style';
@@ -52,7 +54,9 @@ const ActivitiesTable = ({
       <S.Cell>GTI</S.Cell>
       <S.Cell>{formattedHours(activity.hours)}</S.Cell>
       <S.Cell>
-        <img src="icons/info.svg" alt="" />
+        <IconButton>
+          <InfoOutlined />
+        </IconButton>
       </S.Cell>
     </S.Row>
   );
@@ -68,7 +72,9 @@ const ActivitiesTable = ({
         </S.Status>
       </S.Cell>
       <S.Cell>
-        <img src="icons/more-options.svg" alt="" />
+        <IconButton>
+          <MoreVertOutlined />
+        </IconButton>
       </S.Cell>
     </S.Row>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowRightAltOutlined } from '@mui/icons-material';
 import { buildStyles, CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
@@ -29,7 +30,7 @@ const CategoryCard = ({ percent, category }: Props) => (
 
     <S.Button>
       Ver atividades
-      <img src="icons/arrow-right-black.svg" alt="" />
+      <ArrowRightAltOutlined />
     </S.Button>
   </S.Container>
 );

@@ -23,6 +23,7 @@ const StudentDashboard = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(false);
   const [activityList, setActivityList] = useState<Activity[]>([]);
+  const [filteredList, setFilteredList] = useState<Activity[]>([]);
   const loggedUser = useStoreState((state) => state.loggedUser);
 
   const getActivities = async () => {
@@ -46,6 +47,17 @@ const StudentDashboard = () => {
     history.push('/create-activity');
   };
 
+  const filterActivities = (query: string) => {
+    const filteredActivities = activityList.filter((v) => {
+      const lowerName = v.name.toLowerCase();
+      const lowerQuery = query.toLowerCase();
+
+      return lowerName.match(lowerQuery);
+    });
+
+    setFilteredList(filteredActivities);
+  };
+
   useEffect(() => {
     getActivities();
   }, []);
@@ -53,7 +65,7 @@ const StudentDashboard = () => {
   return (
     <Scaffold
       loading={isLoading}
-      onSearch={(query: string) => query}
+      onSearch={filterActivities}
     >
       <>
         <S.TitleContainer>
@@ -72,7 +84,10 @@ const StudentDashboard = () => {
           text="Adicionar atividade"
           startIcon={<AddBoxOutlined />}
         />
-        <ActivitiesTable activities={activityList} type="student" />
+        <ActivitiesTable
+          activities={filteredList?.length > 0 ? filteredList : activityList}
+          type="student"
+        />
       </>
     </Scaffold>
   );
