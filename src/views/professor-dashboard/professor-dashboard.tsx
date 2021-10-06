@@ -18,8 +18,7 @@ const ProfessorDashboard = () => {
   const fetchActivities = async () => {
     setIsLoading(true);
     try {
-      let activities = [];
-      activities = await ActivityService.getActivities(loggedUser?.token as string);
+      const activities = await ActivityService.getActivities(loggedUser?.token as string);
 
       setActivityList(activities);
       setIsLoading(false);

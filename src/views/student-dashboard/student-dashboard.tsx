@@ -67,7 +67,7 @@ const StudentDashboard = () => {
       loading={isLoading}
       onSearch={filterActivities}
     >
-      <>
+      <S.Container>
         <S.TitleContainer>
           <S.Title>Dashboard</S.Title>
           <S.Subtitle>Acompanhe seu progresso</S.Subtitle>
@@ -79,16 +79,19 @@ const StudentDashboard = () => {
           ))}
         </S.Categories>
 
-        <Button
-          onClick={goToActivityForm}
-          text="Adicionar atividade"
-          startIcon={<AddBoxOutlined />}
-        />
+        <S.AddActivities>
+          <Button
+            onClick={goToActivityForm}
+            text="Adicionar atividade"
+            startIcon={<AddBoxOutlined />}
+          />
+        </S.AddActivities>
+
         <ActivitiesTable
           activities={filteredList?.length > 0 ? filteredList : activityList}
           type="student"
         />
-      </>
+      </S.Container>
     </Scaffold>
   );
 };

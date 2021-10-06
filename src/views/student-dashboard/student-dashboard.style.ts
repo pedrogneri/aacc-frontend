@@ -1,9 +1,14 @@
 import styled from 'styled-components/macro';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 export const TitleContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 `;
 
 export const Title = styled.div`
@@ -31,22 +36,6 @@ export const Categories = styled.div`
   min-width: 100%;
 `;
 
-export const AddActivitiesButton = styled.button`
-  display: flex;
-  gap: 1em;
-  justify-content: center;
-  align-items: center;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 19px;
-  color: #fff;
-  background-color: #000;
-  border: none;
-  padding: 8px 14px;
+export const AddActivities = styled.div`
   margin-bottom: 2em;
-  cursor: pointer;
-
-  & > img {
-    width: 14px;
-  }
 `;
