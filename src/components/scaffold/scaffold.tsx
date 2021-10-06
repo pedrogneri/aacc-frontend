@@ -38,10 +38,6 @@ const Scaffold = ({ loading, children, onSearch }: Props) => {
 
   return isLoading ? <Loading /> : (
     <S.Container>
-      <S.Header>
-        <Header user={loggedUser} onSearch={onSearch} />
-      </S.Header>
-
       <S.Sidebar>
         <Sidebar
           type={loggedUser?.accessLevel === 'user' ? 'student' : 'professor'}
@@ -49,7 +45,15 @@ const Scaffold = ({ loading, children, onSearch }: Props) => {
         />
       </S.Sidebar>
 
-      <S.Content>{children}</S.Content>
+      <S.Content>
+        <S.Header>
+          <Header user={loggedUser} onSearch={onSearch} />
+        </S.Header>
+
+        <div>
+          {children}
+        </div>
+      </S.Content>
     </S.Container>
   );
 };

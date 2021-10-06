@@ -40,5 +40,4 @@ export const ItemName = styled.span`
 
 export const FooterButton = styled.div`
   margin-top: auto;
-  margin-bottom: 2em;
 `;
