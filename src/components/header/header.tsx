@@ -2,18 +2,18 @@ import React, {
   ChangeEvent, FormEvent, useMemo, useRef, useState,
 } from 'react';
 
-import { Search, Person } from '@mui/icons-material';
+import { Search, Person, KeyboardArrowLeft } from '@mui/icons-material';
 import { User } from '../../interfaces';
 
 import * as S from './header.style';
 
 type Props = {
   user: User | null;
-  onSearch: Function;
+  onSearch?: Function;
+  onBack?: Function;
 }
 
-const Header = ({ user, onSearch }: Props) => {
-  const searchInputRef = useRef<HTMLInputElement>(null);
+const Header = ({ user, onSearch, onBack }: Props) => {
   const [query, setQuery] = useState('');
 
   const handleChangeQuery = (event: ChangeEvent<HTMLInputElement>) => {
@@ -22,7 +22,10 @@ const Header = ({ user, onSearch }: Props) => {
 
   const handleSearch = async (e: FormEvent) => {
     e.preventDefault();
-    await onSearch(query);
+
+    if (onSearch) {
+      await onSearch(query);
+    }
   };
 
   const userRole = useMemo(() => {
@@ -39,16 +42,24 @@ const Header = ({ user, onSearch }: Props) => {
 
   return (
     <S.Container>
-      <S.InputContainer onSubmit={handleSearch}>
-        <S.StyledInput
-          outlined
-          inputRef={searchInputRef}
-          value={query}
-          onChange={handleChangeQuery}
-          placeholder="Buscar atividades"
-          startAdornment={<Search />}
-        />
-      </S.InputContainer>
+      {onBack && (
+        <S.BackButton onClick={() => onBack()}>
+          <KeyboardArrowLeft />
+          Voltar
+        </S.BackButton>
+      )}
+
+      {onSearch && (
+        <S.InputContainer onSubmit={handleSearch}>
+          <S.StyledInput
+            outlined
+            value={query}
+            onChange={handleChangeQuery}
+            placeholder="Buscar atividades"
+            startAdornment={<Search />}
+          />
+        </S.InputContainer>
+      )}
 
       <S.LoggedUser>
         <S.UserImage>

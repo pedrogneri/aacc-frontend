@@ -10,6 +10,8 @@ import { ActivitiesResponse } from '../../interfaces';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 
+import * as S from './activity-form.style';
+
 const ActivityForm = () => {
   const history = useHistory();
   const loggedUser = useStoreState((state) => state.loggedUser);
@@ -69,9 +71,11 @@ const ActivityForm = () => {
   return (
     <Scaffold
       loading={isLoading}
-      onSearch={(query: string) => query}
+      onBack={() => history.push('/activities')}
     >
       <form onSubmit={formik.handleSubmit}>
+        <S.Title>Enviar atividade</S.Title>
+
         <Input
           outlined
           label="Categoria da atividade"
@@ -133,7 +137,6 @@ const ActivityForm = () => {
 
         <Button text="Enviar atividade" />
       </form>
-
     </Scaffold>
   );
 };

@@ -9,10 +9,13 @@ import * as S from './scaffold.style';
 type Props = {
   loading?: boolean;
   children?: React.ReactElement;
-  onSearch: Function;
+  onBack?: Function;
+  onSearch?: Function;
 }
 
-const Scaffold = ({ loading, children, onSearch }: Props) => {
+const Scaffold = ({
+  loading, children, onSearch, onBack,
+}: Props) => {
   const history = useHistory();
   const loggedUser = useStoreState((state) => state.loggedUser);
   const clearLoggedUser = useStoreActions((actions) => actions.clearLoggedUser);
@@ -47,7 +50,11 @@ const Scaffold = ({ loading, children, onSearch }: Props) => {
 
       <S.Content>
         <S.Header>
-          <Header user={loggedUser} onSearch={onSearch} />
+          <Header
+            user={loggedUser}
+            onSearch={onSearch}
+            onBack={onBack}
+          />
         </S.Header>
 
         <div>

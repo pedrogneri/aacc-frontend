@@ -62,6 +62,21 @@ export const UserImage = styled.div`
   }
 `;
 
+export const BackButton = styled.button`
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 18px;
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  & > svg {
+    width: 24px;
+    margin-right: 5px;
+  }
+`;
+
 export const UserName = styled.div`
   grid-area: name;
   font-size: 18px;
