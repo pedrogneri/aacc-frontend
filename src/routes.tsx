@@ -6,6 +6,7 @@ import { useStoreState } from './hooks';
 
 import {
   ActivityForm,
+  ActivityValidation,
   Login,
   ProfessorDashboard,
   RecoveryPassword,
@@ -43,9 +44,14 @@ const Routes = () => {
           {loggedUser?.accessLevel === 'user'
             ? <StudentDashboard /> : <ProfessorDashboard />}
         </PrivateRoute>
+        <PrivateRoute path="/activity-validation/:id" isAuthorized={isLoggedIn}>
+          {loggedUser?.accessLevel === 'professor' || loggedUser?.accessLevel === 'adm'
+            ? <ActivityValidation /> : <Redirect push to="/activities" />}
+        </PrivateRoute>
         <PrivateRoute path="/create-activity" isAuthorized={isLoggedIn}>
           <ActivityForm />
         </PrivateRoute>
+
         <Route exact path="/login">
           {isLoggedIn ? <Redirect push to="/activities" /> : <Login />}
         </Route>
