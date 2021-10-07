@@ -8,6 +8,7 @@ import {
   ActivityForm,
   Login,
   ProfessorDashboard,
+  RecoveryPassword,
   StudentDashboard,
 } from './views';
 
@@ -47,6 +48,9 @@ const Routes = () => {
         </PrivateRoute>
         <Route exact path="/login">
           {isLoggedIn ? <Redirect push to="/activities" /> : <Login />}
+        </Route>
+        <Route exact path="/recovery-password">
+          {isLoggedIn ? <Redirect push to="/activities" /> : <RecoveryPassword />}
         </Route>
 
         <Route path="/">

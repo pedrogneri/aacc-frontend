@@ -54,3 +54,7 @@ export const logout = async (token?: string) => {
     '/logout', {}, { headers, timeout: 10000 },
   );
 };
+
+export const recoveryPassword = async (RA: string) => {
+  await axios.post('/recuperar-senha', { RA });
+};

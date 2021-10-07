@@ -24,7 +24,6 @@ import {
 const Login = () => {
   const history = useHistory();
 
-  const inputRef = useRef<HTMLInputElement>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordType, setPasswordType] = useState('password');
@@ -58,6 +57,10 @@ const Login = () => {
     }
   };
 
+  const handleClickRecoveryPassword = () => {
+    history.push('recovery-password');
+  };
+
   return isLoading ? <Loading /> : (
     <Container>
       <Content>
@@ -73,7 +76,6 @@ const Login = () => {
         <InputContainer>
           <Input
             label="E-mail ou RA"
-            inputRef={inputRef}
             placeholder="foo@fatec.sp.gov.br"
             value={email}
             onChange={handleChangeEmail}
@@ -84,7 +86,6 @@ const Login = () => {
           <Input
             label="Senha"
             type={passwordType}
-            inputRef={inputRef}
             placeholder="***********"
             value={password}
             onChange={handleChangePassword}
@@ -101,7 +102,9 @@ const Login = () => {
 
         <Footer>
           <Button onClick={doLogin} text="Acessar" endIcon={<ArrowRightAlt />} />
-          <RecoverPassword>Recuperar senha</RecoverPassword>
+          <RecoverPassword onClick={handleClickRecoveryPassword}>
+            Recuperar senha
+          </RecoverPassword>
         </Footer>
       </Content>
     </Container>
