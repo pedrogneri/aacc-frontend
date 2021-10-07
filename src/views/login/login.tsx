@@ -16,7 +16,6 @@ import {
   Title,
   InputContainer,
   TermsOfUse,
-  SubmitButton,
   Header,
   Footer,
   RecoverPassword,
@@ -97,12 +96,12 @@ const Login = () => {
         <TermsOfUse>
           Ao acessar, concordo com os
           {' '}
-          <u>termos de uso.</u>
+          <u>termos de uso</u>
         </TermsOfUse>
 
         <Footer>
           <Button onClick={doLogin} text="Acessar" endIcon={<ArrowRightAlt />} />
-          <RecoverPassword>Recuperar Senha</RecoverPassword>
+          <RecoverPassword>Recuperar senha</RecoverPassword>
         </Footer>
       </Content>
     </Container>

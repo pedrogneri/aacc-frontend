@@ -69,37 +69,14 @@ export const Description = styled.div`
 `;
 
 export const InputContainer = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 `;
 
 export const TermsOfUse = styled.span`
   font-size: 14px;
   line-height: 17px;
   color: #000;
-  margin-bottom: 60px;
-`;
-
-export const SubmitButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #000;
-  color: #fff;
-  padding: 10px 20px;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 17px;
-  border: none;
-  cursor: pointer;
-
-  & > img {
-    padding-left: 10px;
-  }
-
-  @media (max-width: 760px) {
-    width: 100%;
-    margin-bottom: 1em;
-  }
+  margin-bottom: 28px;
 `;
 
 export const Footer = styled.footer`
