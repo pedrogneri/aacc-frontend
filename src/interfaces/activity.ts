@@ -1,6 +1,7 @@
 export type Status = 'negada' | 'confirmada' | 'pendente';
 
 export interface ActivitiesResponse {
+  _id: string;
   RA: string;
   categoria: string;
   cidade: string;
@@ -14,6 +15,7 @@ export interface ActivitiesResponse {
 }
 
 export interface Activity {
+  id: string;
   category: string;
   start: number;
   hours: number;

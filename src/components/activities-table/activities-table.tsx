@@ -1,5 +1,7 @@
 import React, { useMemo } from 'react';
-import { MoreVertOutlined, InfoOutlined } from '@mui/icons-material';
+import { useHistory } from 'react-router-dom';
+
+import { InfoOutlined, Edit } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { Activity } from '../../interfaces';
 
@@ -31,6 +33,8 @@ const ActivitiesTable = ({
   activities,
   type,
 }: Props) => {
+  const history = useHistory();
+
   const columns = useMemo(() => (
     type === 'student' ? STUDENT_COLUMNS : PROFESSOR_COLUMNS
   ), [type]);
@@ -61,6 +65,10 @@ const ActivitiesTable = ({
     </S.Row>
   );
 
+  const handleEditActivity = (activity: Activity) => {
+    history.push(`/activity-validation/${activity.id}`);
+  };
+
   const ProfessorRow = ({ activity }: { activity: Activity }) => (
     <S.Row>
       <S.Cell>{activity.name}</S.Cell>
@@ -72,8 +80,8 @@ const ActivitiesTable = ({
         </S.Status>
       </S.Cell>
       <S.Cell>
-        <IconButton>
-          <MoreVertOutlined />
+        <IconButton onClick={() => handleEditActivity(activity)}>
+          <Edit />
         </IconButton>
       </S.Cell>
     </S.Row>

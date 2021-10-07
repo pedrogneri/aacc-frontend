@@ -7,6 +7,7 @@ axios.defaults.baseURL = baseURL;
 
 const convertResponseToActivity = (v: ActivitiesResponse) => {
   const activity: Activity = {
+    id: v._id,
     category: v.categoria,
     start: v.inicio,
     hours: v.horas,

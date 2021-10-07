@@ -28,7 +28,9 @@
       "react/require-default-props": "off",
       "react/jsx-props-no-spreading": "off",
       "no-unused-vars": "off",
-      "no-console": ["warn", { "allow": ["error"] }]
+      "no-console": ["warn", { "allow": ["error"] }],
+      "react/prop-types": "off",
+      "no-underscore-dangle": "off"
     },
     "settings": {
       "import/resolver": {
