@@ -5,18 +5,21 @@ const baseURL = process.env.REACT_APP_API;
 
 axios.defaults.baseURL = baseURL;
 
-const convertResponseToActivities = (response: ActivitiesResponse[]) => {
-  const activities: Activity[] = response.map((v) => (
-    {
-      category: v.categoria,
-      start: v.inicio,
-      hours: v.horas,
-      name: v.nomeAtividade,
-      status: v.status,
-      studentName: v.nomeAluno,
-    }
-  ));
+const convertResponseToActivity = (v: ActivitiesResponse) => {
+  const activity: Activity = {
+    category: v.categoria,
+    start: v.inicio,
+    hours: v.horas,
+    name: v.nomeAtividade,
+    status: v.status,
+    studentName: v.nomeAluno,
+  };
 
+  return activity;
+};
+
+const convertResponseToActivities = (response: ActivitiesResponse[]) => {
+  const activities: Activity[] = response.map(convertResponseToActivity);
   return activities;
 };
 
@@ -50,4 +53,13 @@ export const createActivity = async (token: string, activity: Partial<Activities
   await axios.post(
     'atividade', activity, { headers },
   );
+};
+
+export const getActivityById = async (token: string, id: string) => {
+  const headers = {
+    'x-access-token': token,
+  };
+
+  const { data } = await axios.get<ActivitiesResponse>(`atividade/${id}`, { headers });
+  return convertResponseToActivity(data);
 };
