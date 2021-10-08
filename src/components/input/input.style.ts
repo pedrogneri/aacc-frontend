@@ -1,5 +1,5 @@
-import { TextField } from '@mui/material';
-import styled from 'styled-components/macro';
+import { Select, TextField } from '@mui/material';
+import styled, { css } from 'styled-components/macro';
 
 export const Container = styled.div`
   max-width: 440px;
@@ -12,7 +12,7 @@ export const Label = styled.label`
   color: #000;
 `;
 
-export const StyledTextField = styled(TextField)({
+const selectCss = css({
   '& label.Mui-focused': {
     color: '#000',
   },
@@ -38,3 +38,11 @@ export const StyledTextField = styled(TextField)({
     },
   },
 });
+
+export const StyledTextField = styled(TextField)`
+  ${selectCss}
+`;
+
+export const StyledSelect = styled(Select)`
+  ${selectCss}
+`;

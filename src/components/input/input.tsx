@@ -1,9 +1,10 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
-import { InputAdornment, IconButton } from '@mui/material';
+import { InputAdornment, IconButton, Select } from '@mui/material';
 
 import * as S from './input.style';
 
 type Props = {
+  children?: React.ReactElement | React.ReactElement[];
   className?: string;
   outlined?: boolean;
   multiline?: boolean;
@@ -16,13 +17,15 @@ type Props = {
   value?: string | number,
   placeholder?: string,
   errorMessage?: string | boolean,
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void,
+  onChange?: (event: any) => void,
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void,
   onClick?: () => void,
 }
 
 const Input = ({
+  children,
   className,
+  type,
   outlined,
   multiline,
   label,
@@ -40,33 +43,39 @@ const Input = ({
         {label}
       </S.Label>
     )}
-    <S.StyledTextField
-      fullWidth
-      variant={outlined ? 'outlined' : 'standard'}
-      margin="dense"
-      className={className}
-      ref={inputRef}
-      color="primary"
-      error={!!errorMessage}
-      helperText={errorMessage}
-      multiline={multiline}
-      InputProps={{
-        placeholder,
-        startAdornment: !!startAdornment && (
+    {type === 'select' ? (
+      <S.StyledSelect fullWidth {...rest}>
+        {children}
+      </S.StyledSelect>
+    ) : (
+      <S.StyledTextField
+        fullWidth
+        variant={outlined ? 'outlined' : 'standard'}
+        margin="dense"
+        className={className}
+        ref={inputRef}
+        color="primary"
+        error={!!errorMessage}
+        helperText={errorMessage}
+        multiline={multiline}
+        InputProps={{
+          placeholder,
+          startAdornment: !!startAdornment && (
           <InputAdornment position="start">
             {startAdornment}
           </InputAdornment>
-        ),
-        endAdornment: !!endAdornment && (
+          ),
+          endAdornment: !!endAdornment && (
           <InputAdornment position="end">
             <IconButton edge={outlined ? 'end' : 'start'} onClick={onClick}>
               {endAdornment}
             </IconButton>
           </InputAdornment>
-        ),
-      }}
-      {...rest}
-    />
+          ),
+        }}
+        {...rest}
+      />
+    )}
   </S.Container>
 );
 
