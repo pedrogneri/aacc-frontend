@@ -1,9 +1,10 @@
 import React, {
-  ChangeEvent, useState,
+  useState,
 } from 'react';
-import { useHistory, useLocation, useParams } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { Loading } from '../../components';
+import { useToast } from '../../hooks';
 import { UserService } from '../../services';
 
 import RecoveryPassword from './recovery-password';
@@ -22,6 +23,7 @@ const useQuery = (): Params => {
 const RecoveryPasswordContainer = () => {
   const { ra, token } = useQuery();
   const history = useHistory();
+  const toast = useToast();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,9 +35,8 @@ const RecoveryPasswordContainer = () => {
 
       history.push('/login');
     } catch {
-      // TODO: Adicionar tratamento de erro
-      console.error('Erro na recuperação da senha');
       setIsLoading(false);
+      toast.add({ type: 'error', message: 'Erro na solicitação de recuperação de senha' });
     }
   };
 
@@ -49,9 +50,8 @@ const RecoveryPasswordContainer = () => {
 
       history.push('/login');
     } catch {
-      // TODO: Adicionar tratamento de erro
-      console.error('Erro na recuperação da senha');
       setIsLoading(false);
+      toast.add({ type: 'error', message: 'Erro na atualização da senha' });
     }
   };
 
