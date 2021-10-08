@@ -33,6 +33,10 @@ const RecoveryPasswordContainer = () => {
     try {
       await UserService.recoveryPassword(login);
 
+      toast.add({
+        type: 'success',
+        message: 'Solicitação feita com sucesso, confira seu email para prosseguir',
+      });
       history.push('/login');
     } catch {
       setIsLoading(false);
@@ -48,6 +52,7 @@ const RecoveryPasswordContainer = () => {
         ra as string, password, token as string,
       );
 
+      toast.add({ type: 'success', message: 'Senha alterada com sucesso' });
       history.push('/login');
     } catch {
       setIsLoading(false);
