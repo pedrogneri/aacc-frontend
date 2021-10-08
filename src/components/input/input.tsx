@@ -59,6 +59,7 @@ const Input = ({
     ) : (
       <S.StyledTextField
         fullWidth
+        type={type}
         variant={outlined ? 'outlined' : 'standard'}
         margin="dense"
         className={className}

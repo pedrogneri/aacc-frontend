@@ -29,3 +29,7 @@ export const Field = styled.div`
   color: #000000;
   padding-bottom: 8px;
 `;
+
+export const SubmitContainer = styled.div`
+  margin-top: 32px;
+`;

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 
-import { Activity } from '../../interfaces';
+import { ActivitiesResponse, Activity } from '../../interfaces';
 import { useStoreState } from '../../hooks';
 import { ActivityService } from '../../services';
 
@@ -34,13 +34,15 @@ const ActivityValidationContainer = () => {
     }
   };
 
-  const handleUpdateActivity = async (values: any) => {
+  const handleUpdateActivity = async (values: Partial<Activity>) => {
     setIsLoading(true);
     try {
-      const updatedActivity = {
+      const updatedActivity: Partial<ActivitiesResponse> = {
         _id: activity?.id,
-        status: values.status,
         RA: activity?.studentRA,
+        status: values.status,
+        horas: values.hours,
+        categoria: values.category,
       };
 
       await ActivityService.updateActivity(

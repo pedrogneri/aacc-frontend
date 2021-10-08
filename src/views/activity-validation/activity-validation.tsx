@@ -25,9 +25,21 @@ const ActivityValidation = ({
   onUpdateActivity,
 }: Props) => {
   const history = useHistory();
-  const initialValues = { status: activity?.status || 'pendente' };
+  const initialValues = {
+    category: activity?.category,
+    status: activity?.status,
+    hours: activity?.hours,
+  };
 
-  const validationSchema = yup.object().shape({});
+  const validationSchema = yup.object().shape({
+    category: yup
+      .string()
+      .required('Campo obrigatório'),
+    hours: yup
+      .number()
+      .moreThan(0, 'O valor não pode ser zero')
+      .required('Campo obrigatório'),
+  });
 
   const formik = useFormik({
     initialValues,
@@ -85,6 +97,23 @@ const ActivityValidation = ({
 
         <form onSubmit={formik.handleSubmit}>
           <Input
+            outlined
+            label="Categoria"
+            name="category"
+            value={formik.values.category}
+            onChange={formik.handleChange}
+            errorMessage={formik.touched.category && formik.errors.category}
+          />
+          <Input
+            outlined
+            label="Duração"
+            name="hours"
+            type="number"
+            value={formik.values.hours}
+            onChange={formik.handleChange}
+            errorMessage={formik.touched.hours && formik.errors.hours}
+          />
+          <Input
             label="Status"
             name="status"
             type="select"
@@ -92,7 +121,10 @@ const ActivityValidation = ({
             onChange={formik.handleChange}
             value={formik.values.status}
           />
-          <Button text="Salvar alterações" />
+
+          <S.SubmitContainer>
+            <Button text="Salvar alterações" />
+          </S.SubmitContainer>
         </form>
       </>
     </Scaffold>
