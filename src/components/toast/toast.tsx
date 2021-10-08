@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { Alert } from '@mui/lab';
+import { Alert } from '@mui/material';
 
 import * as S from './toast.style';
 
