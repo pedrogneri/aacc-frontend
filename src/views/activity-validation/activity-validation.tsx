@@ -14,6 +14,12 @@ type Props = {
   onUpdateActivity: Function;
 }
 
+const STATUS_OPTIONS = [
+  { value: 'pendente', display: 'Pendente' },
+  { value: 'negada', display: 'Negada' },
+  { value: 'confirmada', display: 'Confirmada' },
+];
+
 const ActivityValidation = ({
   activity,
   onUpdateActivity,
@@ -70,6 +76,11 @@ const ActivityValidation = ({
             {' '}
             {activity?.studentName}
           </S.Field>
+          <S.Field>
+            <b>RA: </b>
+            {' '}
+            {activity?.studentRA}
+          </S.Field>
         </S.FieldsArea>
 
         <form onSubmit={formik.handleSubmit}>
@@ -77,13 +88,10 @@ const ActivityValidation = ({
             label="Status"
             name="status"
             type="select"
+            selectItems={STATUS_OPTIONS}
             onChange={formik.handleChange}
             value={formik.values.status}
-          >
-            <MenuItem value="pendente">Pendente</MenuItem>
-            <MenuItem value="negada">Negada</MenuItem>
-            <MenuItem value="confirmada">Confirmada</MenuItem>
-          </Input>
+          />
           <Button text="Salvar alterações" />
         </form>
       </>

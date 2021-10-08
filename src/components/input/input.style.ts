@@ -45,4 +45,5 @@ export const StyledTextField = styled(TextField)`
 
 export const StyledSelect = styled(Select)`
   ${selectCss}
+  margin-top: 8px;
 `;

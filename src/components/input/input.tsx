@@ -1,10 +1,16 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
-import { InputAdornment, IconButton, Select } from '@mui/material';
+import {
+  InputAdornment, IconButton, MenuItem,
+} from '@mui/material';
 
 import * as S from './input.style';
 
+type SelectItem = {
+  value: string;
+  display: string;
+}
+
 type Props = {
-  children?: React.ReactElement | React.ReactElement[];
   className?: string;
   outlined?: boolean;
   multiline?: boolean;
@@ -17,13 +23,13 @@ type Props = {
   value?: string | number,
   placeholder?: string,
   errorMessage?: string | boolean,
+  selectItems?: SelectItem[],
   onChange?: (event: any) => void,
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void,
   onClick?: () => void,
 }
 
 const Input = ({
-  children,
   className,
   type,
   outlined,
@@ -35,6 +41,7 @@ const Input = ({
   endAdornment,
   placeholder,
   errorMessage,
+  selectItems = [],
   ...rest
 }: Props) => (
   <S.Container>
@@ -45,7 +52,9 @@ const Input = ({
     )}
     {type === 'select' ? (
       <S.StyledSelect fullWidth {...rest}>
-        {children}
+        {selectItems.map(({ value, display }) => (
+          <MenuItem value={value}>{display}</MenuItem>
+        ))}
       </S.StyledSelect>
     ) : (
       <S.StyledTextField
