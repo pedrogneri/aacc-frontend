@@ -1,1 +1,1 @@
-export { default as RecoveryPassword } from './recovery-password';
+export { default as RecoveryPassword } from './recovery-password.container';
