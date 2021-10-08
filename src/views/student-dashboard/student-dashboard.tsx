@@ -5,7 +5,7 @@ import { AddBoxOutlined } from '@mui/icons-material';
 import {
   Scaffold, ActivitiesTable, CategoryCard, Button,
 } from '../../components';
-import { useStoreState } from '../../hooks';
+import { useStoreState, useToast } from '../../hooks';
 import { ActivityService } from '../../services';
 import { Activity } from '../../interfaces';
 
@@ -25,6 +25,7 @@ const StudentDashboard = () => {
   const [activityList, setActivityList] = useState<Activity[]>([]);
   const [filteredList, setFilteredList] = useState<Activity[]>([]);
   const loggedUser = useStoreState((state) => state.loggedUser);
+  const toast = useToast();
 
   const getActivities = async () => {
     setIsLoading(true);
@@ -40,6 +41,7 @@ const StudentDashboard = () => {
       setIsLoading(false);
     } catch {
       setIsLoading(false);
+      toast.add({ type: 'error', message: 'Ocorreu algum erro ao carregar as atividades' });
     }
   };
 
