@@ -23,5 +23,5 @@ export const ToastContainer = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  animation: ${successFrames} 3s ease-in-out;
+  animation: ${successFrames} 5s ease-in-out;
 `;
