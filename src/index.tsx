@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { StoreProvider, useStoreRehydrated } from 'easy-peasy';
+import { ToastProvider } from './components/toast/toast.context';
 import Routes from './routes';
 
 import { store } from './store';
@@ -19,7 +20,9 @@ ReactDOM.render(
     <GlobalStyle />
     <StoreProvider store={store}>
       <WaitRehydration>
-        <Routes />
+        <ToastProvider>
+          <Routes />
+        </ToastProvider>
       </WaitRehydration>
     </StoreProvider>
   </React.StrictMode>,
