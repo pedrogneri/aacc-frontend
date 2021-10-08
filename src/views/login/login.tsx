@@ -1,9 +1,9 @@
 import React, {
-  ChangeEvent, useRef, useState,
+  ChangeEvent, useState,
 } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ArrowRightAlt, Visibility, VisibilityOff } from '@mui/icons-material';
-import { useStoreActions } from '../../hooks';
+import { useStoreActions, useToast } from '../../hooks';
 
 import { Input, Loading, Button } from '../../components';
 import { UserService } from '../../services';
@@ -23,6 +23,7 @@ import {
 
 const Login = () => {
   const history = useHistory();
+  const toast = useToast();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,9 +52,8 @@ const Login = () => {
 
       history.push('/activities');
     } catch {
-      // TODO: Adicionar tratamento de erro
-      console.error('Erro no login');
       setIsLoading(false);
+      toast.add({ type: 'error', message: 'Email ou senha incorretos' });
     }
   };
 
