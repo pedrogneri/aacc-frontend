@@ -1,48 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
-import { Scaffold, Button } from '../../components';
+import { MenuItem } from '@mui/material';
+import { Scaffold, Button, Input } from '../../components';
 import { Activity } from '../../interfaces';
-import { useStoreState } from '../../hooks';
-import { ActivityService } from '../../services';
 
 import * as S from './activity-validation.style';
 
-type Params = {
-  id: string;
+type Props = {
+  activity?: Activity;
+  onUpdateActivity: Function;
 }
 
-const ActivityValidation = () => {
-  const { id } = useParams<Params>();
+const ActivityValidation = ({
+  activity,
+  onUpdateActivity,
+}: Props) => {
   const history = useHistory();
+  const initialValues = { status: activity?.status || 'pendente' };
 
-  const loggedUser = useStoreState((state) => state.loggedUser);
-  const [activity, setActivity] = useState<Activity>();
-  const [isLoading, setIsLoading] = useState(false);
+  const validationSchema = yup.object().shape({});
 
-  const getActivity = async () => {
-    setIsLoading(true);
-    try {
-      const activityResponse = await ActivityService.getActivityById(
-        loggedUser?.token as string, id,
-      );
-
-      setActivity(activityResponse);
-      setIsLoading(false);
-    } catch {
-      history.push('/activities');
-    }
-  };
-
-  useEffect(() => {
-    getActivity();
-  }, []);
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit: async (values) => {
+      await onUpdateActivity(values);
+    },
+  });
 
   return (
-    <Scaffold
-      loading={isLoading}
-      onBack={() => history.push('/activities')}
-    >
+    <Scaffold onBack={() => history.push('/activities')}>
       <>
         <S.Header>
           <S.Title>Atividade</S.Title>
@@ -82,7 +72,20 @@ const ActivityValidation = () => {
           </S.Field>
         </S.FieldsArea>
 
-        <Button text="Salvar alterações" />
+        <form onSubmit={formik.handleSubmit}>
+          <Input
+            label="Status"
+            name="status"
+            type="select"
+            onChange={formik.handleChange}
+            value={formik.values.status}
+          >
+            <MenuItem value="pendente">Pendente</MenuItem>
+            <MenuItem value="negada">Negada</MenuItem>
+            <MenuItem value="confirmada">Confirmada</MenuItem>
+          </Input>
+          <Button text="Salvar alterações" />
+        </form>
       </>
     </Scaffold>
   );

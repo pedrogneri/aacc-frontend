@@ -1,1 +1,1 @@
-export { default as ActivityValidation } from './activity-validation';
+export { default as ActivityValidation } from './activity-validation-container';
