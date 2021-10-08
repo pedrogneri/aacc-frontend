@@ -7,13 +7,15 @@ import * as yup from 'yup';
 import { useHistory } from 'react-router-dom';
 import { Input, Scaffold, Button } from '../../components';
 import { ActivitiesResponse } from '../../interfaces';
-import { useStoreState } from '../../hooks';
+import { useStoreState, useToast } from '../../hooks';
 import { ActivityService } from '../../services';
 
 import * as S from './activity-form.style';
 
 const ActivityForm = () => {
   const history = useHistory();
+  const toast = useToast();
+
   const loggedUser = useStoreState((state) => state.loggedUser);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -51,20 +53,26 @@ const ActivityForm = () => {
     onSubmit: async (values) => {
       setIsLoading(true);
 
-      const newActivity: Partial<ActivitiesResponse> = {
-        RA: loggedUser?.ra as string,
-        categoria: values.category,
-        cidade: values.location,
-        inicio: new Date(values.start).getTime(),
-        horas: values.hours,
-        nomeAluno: loggedUser?.name as string,
-        nomeAtividade: values.name,
-        nomePalestrante: values.presenters,
-        organizador: values.entity,
-      };
+      try {
+        const newActivity: Partial<ActivitiesResponse> = {
+          RA: loggedUser?.ra as string,
+          categoria: values.category,
+          cidade: values.location,
+          inicio: new Date(values.start).getTime(),
+          horas: values.hours,
+          nomeAluno: loggedUser?.name as string,
+          nomeAtividade: values.name,
+          nomePalestrante: values.presenters,
+          organizador: values.entity,
+        };
 
-      await ActivityService.createActivity(loggedUser?.token as string, newActivity);
-      history.push('/activities');
+        await ActivityService.createActivity(loggedUser?.token as string, newActivity);
+
+        toast.add({ type: 'success', message: 'Atividade adicionada com sucesso' });
+        history.push('/activities');
+      } catch {
+        toast.add({ type: 'error', message: 'Ocorreu algum erro ao carregar as atividades' });
+      }
     },
   });
 
