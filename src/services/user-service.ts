@@ -58,3 +58,11 @@ export const logout = async (token?: string) => {
 export const recoveryPassword = async (RA: string) => {
   await axios.post('/recuperar-senha', { RA });
 };
+
+export const updatePassword = async (RA: string, password: string, token: string) => {
+  const headers = {
+    'x-access-token': token,
+  };
+
+  await axios.patch('/recuperar-senha', { RA, senha: password }, { headers });
+};
