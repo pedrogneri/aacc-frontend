@@ -14,6 +14,7 @@ const convertResponseToActivity = (v: ActivitiesResponse) => {
     name: v.nomeAtividade,
     status: v.status,
     studentName: v.nomeAluno,
+    studentRA: v.RA,
   };
 
   return activity;
@@ -63,4 +64,14 @@ export const getActivityById = async (token: string, id: string) => {
 
   const { data } = await axios.get<ActivitiesResponse>(`atividade/${id}`, { headers });
   return convertResponseToActivity(data);
+};
+
+export const updateActivity = async (token: string, activity: Partial<ActivitiesResponse>) => {
+  const headers = {
+    'x-access-token': token,
+  };
+
+  await axios.patch(
+    'atividade', activity, { headers },
+  );
 };

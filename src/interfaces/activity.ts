@@ -21,5 +21,6 @@ export interface Activity {
   hours: number;
   name: string;
   status: Status;
+  studentRA: string;
   studentName: string;
 }
