@@ -72,7 +72,7 @@ export const InputContainer = styled.div`
   margin-bottom: 8px;
 `;
 
-export const TermsOfUse = styled.span`
+export const TermsOfUse = styled.div`
   font-size: 14px;
   line-height: 17px;
   color: #000;

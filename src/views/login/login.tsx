@@ -73,39 +73,41 @@ const Login = () => {
           Insira seus dados para acessar o sistema de AACC
         </Description>
 
-        <InputContainer>
-          <Input
-            label="E-mail ou RA"
-            placeholder="foo@fatec.sp.gov.br"
-            value={email}
-            onChange={handleChangeEmail}
-          />
-        </InputContainer>
+        <form onSubmit={doLogin}>
+          <InputContainer>
+            <Input
+              label="E-mail ou RA"
+              placeholder="foo@fatec.sp.gov.br"
+              value={email}
+              onChange={handleChangeEmail}
+            />
+          </InputContainer>
 
-        <InputContainer>
-          <Input
-            label="Senha"
-            type={passwordType}
-            placeholder="***********"
-            value={password}
-            onChange={handleChangePassword}
-            onClick={changePasswordType}
-            endAdornment={passwordType === 'text' ? <VisibilityOff /> : <Visibility />}
-          />
-        </InputContainer>
+          <InputContainer>
+            <Input
+              label="Senha"
+              type={passwordType}
+              placeholder="***********"
+              value={password}
+              onChange={handleChangePassword}
+              onClick={changePasswordType}
+              endAdornment={passwordType === 'text' ? <VisibilityOff /> : <Visibility />}
+            />
+          </InputContainer>
 
-        <TermsOfUse>
-          Ao acessar, concordo com os
-          {' '}
-          <u>termos de uso</u>
-        </TermsOfUse>
+          <TermsOfUse>
+            Ao acessar, concordo com os
+            {' '}
+            <u>termos de uso</u>
+          </TermsOfUse>
 
-        <Footer>
-          <Button onClick={doLogin} text="Acessar" endIcon={<ArrowRightAlt />} />
-          <RecoverPassword onClick={handleClickRecoveryPassword}>
-            Recuperar senha
-          </RecoverPassword>
-        </Footer>
+          <Footer>
+            <Button text="Acessar" endIcon={<ArrowRightAlt />} />
+            <RecoverPassword onClick={handleClickRecoveryPassword}>
+              Recuperar senha
+            </RecoverPassword>
+          </Footer>
+        </form>
       </Content>
     </Container>
   );
